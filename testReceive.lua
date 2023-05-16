@@ -27,11 +27,11 @@ while(true) do
 
     if(messageSplit[1]=="TurtleStatus")then
         monitor.setCursorPos(1,2)
-        monitor.write(messageSplit[2])
+        monitor.write(messageSplit[2].."  ")
         monitor.setCursorPos(10,2)
-        monitor.write(messageSplit[3].." " .. messageSplit[4] .. " " .. messageSplit[5] .. " " .. messageSplit[6])
+        monitor.write(messageSplit[3].." " .. messageSplit[4] .. " " .. messageSplit[5] .. " " .. messageSplit[6].."   ")
         monitor.setCursorPos(25,2)
-        monitor.write(messageSplit[7])
+        monitor.write(messageSplit[7].."   ")
     end
 
 
