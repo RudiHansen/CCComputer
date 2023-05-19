@@ -12,10 +12,15 @@ monitor.write(monitorSizeX.." "..monitorSizeY)
 
 monitor.setCursorPos(1,1)
 monitor.write("Name")
+
 monitor.setCursorPos(10,1)
+monitor.write("Status")
+
+monitor.setCursorPos(18,1)
 monitor.write("Position")
-monitor.setCursorPos(25,1)
-monitor.write("Fuel Level")
+
+monitor.setCursorPos(35,1)
+monitor.write("Fuel")
 
 while(true) do
     id,message = rednet.receive() --wait until a mesage is received
@@ -28,9 +33,14 @@ while(true) do
     if(messageSplit[1]=="TurtleStatus")then
         monitor.setCursorPos(1,2)
         monitor.write(messageSplit[2].."  ")
+
         monitor.setCursorPos(10,2)
+        monitor.write(messageSplit[8].."   ")
+
+        monitor.setCursorPos(18,2)
         monitor.write(messageSplit[3].." " .. messageSplit[4] .. " " .. messageSplit[5] .. " " .. messageSplit[6].."   ")
-        monitor.setCursorPos(25,2)
+
+        monitor.setCursorPos(35,2)
         monitor.write(messageSplit[7].."   ")
     end
 
