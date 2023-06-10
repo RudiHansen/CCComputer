@@ -1,4 +1,4 @@
-local monitor = peripheral.wrap("left")
+local monitor = peripheral.wrap("right")
 
 rednet.open("back") --enable modem on the right side of the PC
 
