@@ -14,13 +14,16 @@ monitor.write(monitorSizeX.." "..monitorSizeY)
 monitor.setCursorPos(1,1)
 monitor.write("Name")
 
-monitor.setCursorPos(10,1)
+monitor.setCursorPos(9,1)
 monitor.write("Status")
 
-monitor.setCursorPos(18,1)
+monitor.setCursorPos(17,1)
 monitor.write("Position")
 
-monitor.setCursorPos(35,1)
+monitor.setCursorPos(32,1)
+monitor.write("Inv")
+
+monitor.setCursorPos(36,1)
 monitor.write("Fuel")
 
 while(true) do
@@ -39,14 +42,17 @@ while(true) do
             monitor.setCursorPos(1,2)
             monitor.write(messageSplit[2].."  ")
 
-            monitor.setCursorPos(10,2)
+            monitor.setCursorPos(9,2)
             monitor.write(messageSplit[8].."   ")
 
-            monitor.setCursorPos(18,2)
+            monitor.setCursorPos(17,2)
             monitor.write(messageSplit[3].." " .. messageSplit[4] .. " " .. messageSplit[5] .. " " .. messageSplit[6].."   ")
 
-            monitor.setCursorPos(35,2)
+            monitor.setCursorPos(32,2)
             monitor.write(messageSplit[7].."   ")
+
+            monitor.setCursorPos(36,2)
+            monitor.write(messageSplit[8].."   ")
         end
     end
 
