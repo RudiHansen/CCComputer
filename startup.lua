@@ -1,1 +1,1 @@
-shell.run("testReceive")
+shell.run("main")

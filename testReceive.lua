@@ -43,7 +43,7 @@ while(true) do
             monitor.write(messageSplit[2].."  ")
 
             monitor.setCursorPos(9,2)
-            monitor.write(messageSplit[8].."   ")
+            monitor.write(messageSplit[9].."   ")
 
             monitor.setCursorPos(17,2)
             monitor.write(messageSplit[3].." " .. messageSplit[4] .. " " .. messageSplit[5] .. " " .. messageSplit[6].."   ")

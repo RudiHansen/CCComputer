@@ -1,0 +1,46 @@
+monitorSizeX 39
+monitorSizeY 19
+textPos 4
+textPos 14.5
+screen.getAnyEvent()
+event rednet_message
+data 3
+x TurtleStatus;Miner2;95;45;80;S;16;0;Test
+y S
+turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 95,["Status"] = Test,["PosZ"] = 45,["Inv"] = 16,["PosY"] = 80,} 
+screen.getAnyEvent()
+event rednet_message
+data 1
+x TurtleStatus;Miner1;47;40;61;S;6;1642;Test
+y S
+turtleData { ["PosF"] = S,["Fuel"] = 1642,["Name"] = Miner1,["PosX"] = 47,["Status"] = Test,["PosZ"] = 40,["Inv"] = 6,["PosY"] = 61,} 
+screen.getAnyEvent()
+event rednet_message
+data 3
+x TurtleStatus;Miner2;16;46;41;S;16;0;Test
+y S
+turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 16,["Status"] = Test,["PosZ"] = 46,["Inv"] = 16,["PosY"] = 41,} 
+screen.getAnyEvent()
+event rednet_message
+data 1
+x TurtleStatus;Miner1;17;18;48;S;6;1642;Test
+y S
+turtleData { ["PosF"] = S,["Fuel"] = 1642,["Name"] = Miner1,["PosX"] = 17,["Status"] = Test,["PosZ"] = 18,["Inv"] = 6,["PosY"] = 48,} 
+screen.getAnyEvent()
+event rednet_message
+data 3
+x TurtleStatus;Miner2;43;83;20;S;16;0;Test
+y S
+turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 43,["Status"] = Test,["PosZ"] = 83,["Inv"] = 16,["PosY"] = 20,} 
+screen.getAnyEvent()
+event rednet_message
+data 1
+x TurtleStatus;Miner1;23;43;32;S;6;1642;Test
+y S
+turtleData { ["PosF"] = S,["Fuel"] = 1642,["Name"] = Miner1,["PosX"] = 23,["Status"] = Test,["PosZ"] = 43,["Inv"] = 6,["PosY"] = 32,} 
+screen.getAnyEvent()
+event rednet_message
+data 3
+x TurtleStatus;Miner2;33;17;1;S;16;0;Test
+y S
+turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 33,["Status"] = Test,["PosZ"] = 17,["Inv"] = 16,["PosY"] = 1,} 
