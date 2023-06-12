@@ -43,7 +43,7 @@ function turtles.messageToTurtleData(id,message)
                 }
     
 
-    logFile.logWrite("turtleData",turtleData)
+    --logFile.logWrite("turtleData",turtleData)
     turtlesTable[id] = turtleData
 end
 
