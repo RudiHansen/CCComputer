@@ -18,15 +18,15 @@ Still Missing:
 I was thinking that perhaps I should look into separating thinks into different processes that may be able to run at the same time, using parallel.waitForAll
 1. Process that receives modem messages, and processes them modem.receiveMessages()
     Protocol S   : Status updates from Turtles  (Done)
-    Protocol QB  : Question about blocks
+    Protocol QB  : Question about blocks        (Done)
     Protocol QL  : Question about locations     (Not made)
     Protocol QS  : Question about STOP Command  (Not made)
     Protocol QBL : Question about block lists   (Not made)
-    Protocol
+
 2. Process that handles the monitor, and perhaps also monitor_touch events
     Screen for Menu                             (Done)
     Screen for Turtle List                      (Done)
-    Screen for questions about blocks
+    Screen for questions about blocks           (Done)
     Screen for stopping a turtle
 
 3. Process that reads jobs for turtles from files and sends them to the turtles.

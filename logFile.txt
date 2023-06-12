@@ -1,4 +1,0 @@
-monSizeX 39
-monSizeY 19
-In monitor.screenHandler()
-In monitor.touchHandler()
