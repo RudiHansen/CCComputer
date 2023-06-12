@@ -7,7 +7,7 @@
 modem     = require("lib.modem")
 util      = require("lib.util")
 logFile   = require("lib.logFile")
-screen    = require("lib.screen")
+monitor    = require("lib.monitor")
 event     = require("lib.event")
 turtles   = require("lib.turtles")
 
@@ -15,24 +15,29 @@ turtles   = require("lib.turtles")
 -- Init library's
 logFile.logFileOpen()
 modem.init()
-screen.init()
+monitor.init()
 
---screen.drawMainScreen()
-screen.drawTurtleListScreen()
+--monitor.drawMainScreen()
+monitor.drawTurtleListScreen()
+
+
+while(true) do
+    parallel.waitForAll(modem.receiveMessages())
+end
 
 while(true)do
     ev,data,x,y = event.getAnyEvent()
     if(ev=="rednet_message") then
         turtles.messageToTurtleData(data,x)
-        screen.updateTurtleListOnScreen()
+        monitor.updateTurtleListOnScreen()
     elseif(ev=="monitor_touch") then
-        --screen.writeAtPos("Monitor touch",10,8)
+        --monitor.writeAtPos("Monitor touch",10,8)
         if(y==3)then
-            screen.writeAtPos("Pressed 1          ",10,8)
+            monitor.writeAtPos("Pressed 1          ",10,8)
         elseif(y==4) then
-            screen.writeAtPos("Pressed 2          ",10,8)
+            monitor.writeAtPos("Pressed 2          ",10,8)
         elseif(y==6) then
-            screen.writeAtPos("Pressed q          ",10,8)
+            monitor.writeAtPos("Pressed q          ",10,8)
         end
     end
 end
