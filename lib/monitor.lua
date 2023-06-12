@@ -110,13 +110,15 @@ end
 function monitor.updateTurtleListOnScreen()
     local startLine = 4
 
-    for i = 1,10,1 do
-        local td = turtles.getTurtleData(i)
-        if(td~=nil) then
-            monitor.writeTurtleDataOnLine(i,startLine)
-            startLine = startLine + 1
+    if(activeScreen=="TURTLELIST") then
+        for i = 1,10,1 do
+            local td = turtles.getTurtleData(i)
+            if(td~=nil) then
+                monitor.writeTurtleDataOnLine(i,startLine)
+                startLine = startLine + 1
+            end
         end
-     end
+    end
 end
 
 function monitor.writeTurtleDataOnLine(id,line)
