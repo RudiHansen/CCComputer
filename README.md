@@ -24,8 +24,8 @@ I was thinking that perhaps I should look into separating thinks into different 
     Protocol QBL : Question about block lists   (Not made)
     Protocol
 2. Process that handles the monitor, and perhaps also monitor_touch events
-    Screen for Menu
-    Screen for Turtle List
+    Screen for Menu                             (Done)
+    Screen for Turtle List                      (Done)
     Screen for questions about blocks
     Screen for stopping a turtle
 

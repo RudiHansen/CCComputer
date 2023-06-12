@@ -7,6 +7,8 @@ local monitor = {}
 
 local mon
 local monSizeX, monSizeY
+local activeScreen  = ""
+local lastTouch     = ""
 
 function monitor.init()
     mon = peripheral.wrap("right")
@@ -15,11 +17,72 @@ function monitor.init()
     logFile.logWrite("monSizeY",monSizeY)
 end
 
+
+function monitor.screenHandler()
+    logFile.logWrite("In monitor.screenHandler()")
+    monitor.drawMainScreen()
+    activeScreen = "MAIN"
+
+    while(true) do
+        if(activeScreen=="MAIN" and lastTouch=="1")then
+            lastTouch=""
+            monitor.drawTurtleListScreen()
+            activeScreen = "TURTLELIST"
+        elseif(activeScreen=="MAIN" and lastTouch=="q")then
+            lastTouch=""
+            monitor.clear()
+            error()
+        elseif(activeScreen=="TURTLELIST" and lastTouch=="q")then
+            lastTouch=""
+            monitor.drawMainScreen()
+            activeScreen = "MAIN"
+        end
+        monitor.yield()
+    end
+end
+
+function monitor.touchHandler()
+    logFile.logWrite("In monitor.touchHandler()")
+
+    while(true) do
+        event, side, x, y = os.pullEvent("monitor_touch")
+        logFile.logWrite("event",event)
+        logFile.logWrite("side",side)
+        logFile.logWrite("x",x)
+        logFile.logWrite("y",y)
+
+        logFile.logWrite("activeScreen",activeScreen)
+        if(activeScreen=="MAIN")then
+            if(y==3)then
+                logFile.logWrite("Pressed","1")
+                lastTouch="1"
+            elseif(y==4) then
+                logFile.logWrite("Pressed","2")
+                lastTouch="2"
+            elseif(y==6) then
+                logFile.logWrite("Pressed","q")
+                lastTouch="q"
+            end
+        elseif(activeScreen=="TURTLELIST")then
+            if(y==9)then
+                logFile.logWrite("Pressed","q")
+                lastTouch="q"
+            end
+        end
+        monitor.yield()
+    end
+end
+
+function monitor.yield()
+    os.queueEvent("fake")
+    os.pullEvent("fake")
+end
+
 function monitor.drawMainScreen()
     -- Clear Monitor setup
-    monr.clear()
-    monr.setTextScale(1) -- 1 Seems to be the standard, 0.5 makes the text smaller
-    monr.setTextColor(colors.white)
+    mon.clear()
+    mon.setTextScale(1) -- 1 Seems to be the standard, 0.5 makes the text smaller
+    mon.setTextColor(colors.white)
 
     monitor.centerTextOnLine("********** MAIN **********",1)
     monitor.writeAtPos("1 : Show Turtle List",10,3)
@@ -69,7 +132,7 @@ end
 
 function monitor.centerTextOnLine(text,line)
     local textPos = ((monSizeX - string.len(text)) / 2) + 1
-    logFile.logWrite("textPos",textPos)
+    --logFile.logWrite("textPos",textPos)
 
     mon.setCursorPos(textPos,line)
     mon.write(text)
@@ -83,6 +146,10 @@ end
 function monitor.writeAtPos(text,x,y)
     mon.setCursorPos(x,y)
     mon.write(text)
+end
+
+function monitor.clear()
+    mon.clear()
 end
 
 return monitor
