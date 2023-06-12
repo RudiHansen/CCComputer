@@ -121,6 +121,29 @@ function monitor.updateTurtleListOnScreen()
     end
 end
 
+function monitor.askAboutBlock(turtleId,blockName)
+    monitor.writeAtPos("Turtle " .. turtleId .. " asks." ,1,15)
+    monitor.writeAtPos("What to do with block:"          ,1,16)
+    monitor.writeAtPos(blockName                         ,1,17)
+    monitor.writeAtPos("mine"                            ,1,18)
+    monitor.writeAtPos("ignore"                          ,10,18)
+    monitor.writeAtPos("pass"                            ,20,18)
+
+    event, side, x, y = os.pullEvent("monitor_touch")
+    if (x > 0 and x < 10) then
+        rednet.send(id,"mine")
+    elseif (x > 10 and x < 20) then
+        rednet.send(id,"ignore")
+    elseif (x > 20 and x < 30) then
+        rednet.send(id,"pass")
+    end
+
+    monitor.clearLine(15)
+    monitor.clearLine(16)
+    monitor.clearLine(17)
+    monitor.clearLine(18)
+end
+
 function monitor.writeTurtleDataOnLine(id,line)
     local td   = turtles.getTurtleData(id)
     local tPos = td.PosX .. " " .. td.PosZ .. " " .. td.PosY .. " " .. td.PosF
@@ -152,6 +175,11 @@ end
 
 function monitor.clear()
     mon.clear()
+end
+
+function monitor.clearLine(line)
+    mon.setCursorPos(1,line)
+    mon.clearLine()
 end
 
 return monitor

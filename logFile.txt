@@ -2,35 +2,3 @@ monSizeX 39
 monSizeY 19
 In monitor.screenHandler()
 In monitor.touchHandler()
-turtleData { ["PosF"] = S,["Fuel"] = 1642,["Name"] = Miner1,["PosX"] = 48,["Status"] = Test,["PosZ"] = 44,["Inv"] = 6,["PosY"] = 50,} 
-turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 6,["Status"] = Test,["PosZ"] = 47,["Inv"] = 16,["PosY"] = 61,} 
-turtleData { ["PosF"] = S,["Fuel"] = 1642,["Name"] = Miner1,["PosX"] = 94,["Status"] = Test,["PosZ"] = 54,["Inv"] = 6,["PosY"] = 86,} 
-turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 92,["Status"] = Test,["PosZ"] = 83,["Inv"] = 16,["PosY"] = 99,} 
-turtleData { ["PosF"] = S,["Fuel"] = 1642,["Name"] = Miner1,["PosX"] = 16,["Status"] = Test,["PosZ"] = 81,["Inv"] = 6,["PosY"] = 21,} 
-turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 70,["Status"] = Test,["PosZ"] = 13,["Inv"] = 16,["PosY"] = 4,} 
-turtleData { ["PosF"] = S,["Fuel"] = 1642,["Name"] = Miner1,["PosX"] = 7,["Status"] = Test,["PosZ"] = 30,["Inv"] = 6,["PosY"] = 85,} 
-turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 86,["Status"] = Test,["PosZ"] = 52,["Inv"] = 16,["PosY"] = 95,} 
-event monitor_touch
-side right
-x 16
-y 3
-activeScreen MAIN
-Pressed 1
-turtleData { ["PosF"] = S,["Fuel"] = 1642,["Name"] = Miner1,["PosX"] = 85,["Status"] = Test,["PosZ"] = 42,["Inv"] = 6,["PosY"] = 25,} 
-turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 56,["Status"] = Test,["PosZ"] = 43,["Inv"] = 16,["PosY"] = 47,} 
-turtleData { ["PosF"] = S,["Fuel"] = 1642,["Name"] = Miner1,["PosX"] = 10,["Status"] = Test,["PosZ"] = 71,["Inv"] = 6,["PosY"] = 40,} 
-turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 39,["Status"] = Test,["PosZ"] = 16,["Inv"] = 16,["PosY"] = 87,} 
-event monitor_touch
-side right
-x 17
-y 9
-activeScreen TURTLELIST
-Pressed q
-turtleData { ["PosF"] = S,["Fuel"] = 1642,["Name"] = Miner1,["PosX"] = 66,["Status"] = Test,["PosZ"] = 67,["Inv"] = 6,["PosY"] = 54,} 
-turtleData { ["PosF"] = S,["Fuel"] = 0,["Name"] = Miner2,["PosX"] = 27,["Status"] = Test,["PosZ"] = 88,["Inv"] = 16,["PosY"] = 67,} 
-event monitor_touch
-side right
-x 15
-y 6
-activeScreen MAIN
-Pressed q
