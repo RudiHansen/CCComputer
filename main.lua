@@ -24,7 +24,9 @@ monitor.clear()
 
 
 while(true) do
-    parallel.waitForAny(monitor.screenHandler,monitor.touchHandler)
+    parallel.waitForAny(monitor.screenHandler,
+                        monitor.touchHandler,
+                        modem.receiveMessages)
 end
 
 -- Finalize script
