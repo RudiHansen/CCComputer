@@ -11,6 +11,7 @@ local turtleJobsData        = {TurtleName="",Status="",JobType="",x1=0,z1=0,y1=0
 local turtleJobsDataList    = {}
 
 function turtleJobs.loadData()
+    --logFile.logWrite("turtleJobs.loadData()")
     local fields = {}
     
     -- Open file for reading
@@ -33,7 +34,8 @@ function turtleJobs.loadData()
         turtleJobsData.z2           = fields[9]
         turtleJobsData.y2           = fields[10]
         turtleJobsData.f2           = fields[11]
-        table.insert(turtleJobsDataList,turtleJobsData)            
+        table.insert(turtleJobsDataList,turtleJobsData)
+        --logFile.logWrite("table.insert",turtleJobsData.turtleName)
     end
 
     -- Close file
@@ -41,13 +43,18 @@ function turtleJobs.loadData()
 end
 
 function turtleJobs.GetJobForTurtle(turtleName)
+    --logFile.logWrite("turtleJobs.GetJobForTurtle ",turtleName)
     for i=1,#turtleJobsDataList do
         turtleJobsData = turtleJobsDataList[i]
+        --logFile.logWrite("turtleJobsData.TurtleName",turtleJobsData.TurtleName)
+        --logFile.logWrite("turtleJobsData.Status",turtleJobsData.Status)
         if(turtleJobsData.TurtleName == turtleName and turtleJobsData.Status=="NEW")then
             table.remove(turtleJobsDataList,i)
+            --logFile.logWrite("Return data")
             return turtleJobsData
         end
     end
+    --logFile.logWrite("Return nil")
     return nil
 end
 

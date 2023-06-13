@@ -10,7 +10,6 @@ local turtlesTable = {}
 function turtles.addFromStatusMessage(message)
     local turtleData = {}
 
-
     if(event=="modem_message" or event=="timer" ) then
         return
     end
@@ -42,7 +41,7 @@ function turtles.messageToTurtleData(id,message)
                     Fuel    = messageSplit[8]
                 }
     
-
+    --logFile.logWrite("turtles.messageToTurtleData ",id)
     --logFile.logWrite("turtleData",turtleData)
     turtlesTable[id] = turtleData
 end
@@ -51,9 +50,14 @@ function turtles.getTurtleData(id)
     return turtlesTable[id]
 end
 
-function turtle.getTurtleName(id)
-    return turtlesTable[id].Name
+function turtles.getTurtleName(id)
+    --logFile.logWrite("turtles.getTurtleName Id=",id)
+    --logFile.logWrite(turtlesTable)    
+    local td = turtlesTable[id]
+    --logFile.logWrite(td)    
+    if(td~=nil)then
+        return td.Name
+    end
 end
-
 
 return turtles

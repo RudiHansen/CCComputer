@@ -19,6 +19,7 @@ I was thinking that perhaps I should look into separating thinks into different 
 1. Process that receives modem messages, and processes them modem.receiveMessages()
     Protocol S   : Status updates from Turtles  (Done)
     Protocol QB  : Question about blocks        (Done)
+    Protocol QJ  : Question about Jobs          (Done)
     Protocol QL  : Question about locations     (Not made)
     Protocol QS  : Question about STOP Command  (Not made)
     Protocol QBL : Question about block lists   (Not made)
@@ -30,8 +31,8 @@ I was thinking that perhaps I should look into separating thinks into different 
     Screen for stopping a turtle
 
 3. Process that reads jobs for turtles from files and sends them to the turtles.
-    MoveTo Job (x,z,y,f)
-    ClearArea Job (fromArea,toArea)
+    MoveTo Job (x,z,y,f)                                (Almost Done, missing axis priority) 
+    ClearArea Job (fromArea,toArea)                     (Almost Done, missing axis priority) 
     Continue ClearArea Job (fromArea,toArea,beginFrom)
 
 In Main
