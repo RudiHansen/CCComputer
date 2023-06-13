@@ -1,1 +1,2 @@
-logFile.txt
+*.txt
+*.dat

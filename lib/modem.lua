@@ -26,6 +26,13 @@ function modem.receiveMessages()
             monitor.updateTurtleListOnScreen()
         elseif(protocol == "QB") then -- Protocol QB = Question about Block action
             monitor.askAboutBlock(id,message)
+        elseif(protocol == "QJ") then -- Protocol QJ = Question about Turtle Job
+            local turtleName = turtle.getTurtleName(id)
+            logFile.logWrite("turtleName",turtleName)
+            local td = turtleJobs.GetJobForTurtle(turtleName)
+            logFile.logWrite("td",td)
+            rednet.send(id,turtleJobs.Job2MsgStr(td))
+            logFile.logWrite("Sent reply")
         end
     end
 end

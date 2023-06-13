@@ -51,5 +51,9 @@ function turtles.getTurtleData(id)
     return turtlesTable[id]
 end
 
+function turtle.getTurtleName(id)
+    return turtlesTable[id].Name
+end
+
 
 return turtles
