@@ -31,9 +31,10 @@ I was thinking that perhaps I should look into separating thinks into different 
     Screen for stopping a turtle
 
 3. Process that reads jobs for turtles from files and sends them to the turtles.
-    MoveTo Job (x,z,y,f)                                (Almost Done, missing axis priority) 
-    ClearArea Job (fromArea,toArea)                     (Almost Done, missing axis priority) 
-    Continue ClearArea Job (fromArea,toArea,beginFrom)
+    MoveTo Job (x,z,y,f,axisPriority)                               (Done)
+    ClearArea Job (fromArea,toArea,axisPriority)                    (Done)
+    MoveHome Job (axisPriority)                                     (Done)
+    Continue ClearArea Job (fromArea,toArea,beginFrom,axisPriority)
 
 In Main
     event.getAnyEvent() fix the return variables to be more saying

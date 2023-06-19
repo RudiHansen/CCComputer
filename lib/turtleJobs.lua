@@ -7,7 +7,7 @@ local turtleJobs = {}
 
 local dataFileNameTurtleJobs = "turtleJobs.dat"
 
-local turtleJobsData        = {TurtleName="",Status="",JobType="",x1=0,z1=0,y1=0,f1="",x2=0,z2=0,y2=0,f2=""}
+local turtleJobsData        = {TurtleName="",Status="",JobType="",x1=0,z1=0,y1=0,f1="",x2=0,z2=0,y2=0,f2="",axisPriority=""}
 local turtleJobsDataList    = {}
 
 function turtleJobs.loadData()
@@ -34,8 +34,10 @@ function turtleJobs.loadData()
         turtleJobsData.z2           = fields[9]
         turtleJobsData.y2           = fields[10]
         turtleJobsData.f2           = fields[11]
+        turtleJobsData.axisPriority = fields[12]
         table.insert(turtleJobsDataList,turtleJobsData)
-        --logFile.logWrite("table.insert",turtleJobsData.turtleName)
+        logFile.logWrite("table.insert",turtleJobsData.TurtleName)
+        logFile.logWrite("turtleJobsData.axisPriority",turtleJobsData.axisPriority)
     end
 
     -- Close file
@@ -69,7 +71,8 @@ function turtleJobs.Job2MsgStr(turtleJobsData)
                    turtleJobsData.x2           ..","..
                    turtleJobsData.z2           ..","..
                    turtleJobsData.y2           ..","..
-                   turtleJobsData.f2
+                   turtleJobsData.f2           ..","..
+                   turtleJobsData.axisPriority
 end
 
 return turtleJobs
