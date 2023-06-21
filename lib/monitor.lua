@@ -122,6 +122,7 @@ function monitor.updateTurtleListOnScreen()
 end
 
 function monitor.askAboutBlock(turtleId,blockName)
+    logFile.logWrite("In monitor.askAboutBlock")
     monitor.writeAtPos("Turtle " .. turtleId .. " asks." ,1,15)
     monitor.writeAtPos("What to do with block:"          ,1,16)
     monitor.writeAtPos(blockName                         ,1,17)
@@ -131,11 +132,14 @@ function monitor.askAboutBlock(turtleId,blockName)
 
     event, side, x, y = os.pullEvent("monitor_touch")
     if (x > 0 and x < 10) then
-        rednet.send(id,"mine")
+        logFile.logWrite("rednet.send ",id,"mine")
+        rednet.send(id,"mine","AB")
     elseif (x > 10 and x < 20) then
-        rednet.send(id,"ignore")
+        logFile.logWrite("rednet.send ",id,"ignore")
+        rednet.send(id,"ignore","AB")
     elseif (x > 20 and x < 30) then
-        rednet.send(id,"pass")
+        logFile.logWrite("rednet.send ",id,"pass")
+        rednet.send(id,"pass","AB")
     end
 
     monitor.clearLine(15)

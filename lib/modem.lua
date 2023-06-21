@@ -17,9 +17,10 @@ end
 function modem.receiveMessages()
     while(true) do
         id,message,protocol = rednet.receive() --wait until a message is received
-        --logFile.logWrite("id",id)
-        --logFile.logWrite("message",message)
-        --logFile.logWrite("protocol",protocol)
+        logFile.logWrite("modem.receiveMessages()")
+        logFile.logWrite("id",id)
+        logFile.logWrite("message",message)
+        logFile.logWrite("protocol",protocol)
     
         if(protocol == "S") then -- Protocol S = Status Messages
             turtles.messageToTurtleData(id,message)

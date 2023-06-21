@@ -14,11 +14,6 @@ Make screen control module
     2 : Show Turtle list
     3 : Show Turtle questions
 
-Current problems:
-The modem messaging systems needs to be more stable.
-So I think I need to look into making it better, with some validation of messages.
-Something like, when a message is sent there has to be an ack
-
 Still Missing:
 I was thinking that perhaps I should look into separating thinks into different processes that may be able to run at the same time, using parallel.waitForAll
 1. Process that receives modem messages, and processes them modem.receiveMessages()
