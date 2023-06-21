@@ -148,11 +148,11 @@ function monitor.writeTurtleDataOnLine(id,line)
     local td   = turtles.getTurtleData(id)
     local tPos = td.PosX .. " " .. td.PosZ .. " " .. td.PosY .. " " .. td.PosF
 
-    monitor.writeAtPos(td.Name,1,line)
-    monitor.writeAtPos(td.Status,9,line)
-    monitor.writeAtPos(tPos,17,line)
-    monitor.writeAtPos(td.Inv,32,line)
-    monitor.writeAtPos(td.Fuel,36,line)
+    monitor.writeAtPos(util.stringLen(td.Name,8),1,line)
+    monitor.writeAtPos(util.stringLen(td.Status,7),9,line)
+    monitor.writeAtPos(util.stringLen(tPos,14),17,line)
+    monitor.writeAtPos(util.stringLen(td.Inv,3),32,line)
+    monitor.writeAtPos(util.stringLen(td.Fuel,5),36,line)
 end
 
 function monitor.centerTextOnLine(text,line)

@@ -60,19 +60,22 @@ function turtleJobs.GetJobForTurtle(turtleName)
     return nil
 end
 
-function turtleJobs.Job2MsgStr(turtleJobsData)
-    return         turtleJobsData.TurtleName   ..","..
-                   turtleJobsData.Status       ..","..
-                   turtleJobsData.JobType      ..","..
-                   turtleJobsData.x1           ..","..
-                   turtleJobsData.z1           ..","..
-                   turtleJobsData.y1           ..","..
-                   turtleJobsData.f1           ..","..
-                   turtleJobsData.x2           ..","..
-                   turtleJobsData.z2           ..","..
-                   turtleJobsData.y2           ..","..
-                   turtleJobsData.f2           ..","..
-                   turtleJobsData.axisPriority
+function turtleJobs.Job2MsgStr(turtleJobData)
+    if(turtleJobData == nil)then
+        return ""
+    end
+    return         turtleJobData.TurtleName   ..","..
+                   turtleJobData.Status       ..","..
+                   turtleJobData.JobType      ..","..
+                   turtleJobData.x1           ..","..
+                   turtleJobData.z1           ..","..
+                   turtleJobData.y1           ..","..
+                   turtleJobData.f1           ..","..
+                   turtleJobData.x2           ..","..
+                   turtleJobData.z2           ..","..
+                   turtleJobData.y2           ..","..
+                   turtleJobData.f2           ..","..
+                   turtleJobData.axisPriority
 end
 
 return turtleJobs
