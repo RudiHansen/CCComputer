@@ -6,31 +6,8 @@ Needs to have a list of all active turtles their position and their status.
 Needs to be able to send work orders to turtles.
 
 # Next Step
-Have first to make some changes to the Main computer.
-Has to have a main.lua main controller program.
-Has to maintain a table of Turtles
-Make screen control module
-    1 : Main screen with menu
-    2 : Show Turtle list
-    3 : Show Turtle questions
-
 Still Missing:
 
-(Done)No matter how the turtle stops working, it has to empty storage and refuel on the way back.
-
-(Done)Clear area method needs to call moveTo with the correct axispriority, and also calculate where the turtle should go before beginning the job. (Call to moveTo)
-
-(Done)Think about how to get the moveTo method to select the right axispriority, or just perhaps the call to it from ClearArea.
-
-Find a good way to store data on the computer about Turtles, and positions of storage and fuel.
-So make a list with these fields:
-Id  Name    PosX    PosZ    PosY    Face
-1   Miner1  75      -41     63      "S"
-2   Miner2  77      -41     63      "S"
-3   Fuel    73      -40     63      "N"
-4   DropOff 74      -40     63      "N"
-
-Then I need a screen on the Computer to show the list, and possibility to Edit, Delete and Add Records. This has to be on the actual computer not the Monitor.
 
 
 Also need to work on block avoidance, it is simply not good enough as it is now.
@@ -45,7 +22,7 @@ I was thinking that perhaps I should look into separating thinks into different 
     Protocol S   : Status updates from Turtles  (Done)
     Protocol QB  : Question about blocks        (Done)
     Protocol QJ  : Question about Jobs          (Done)
-    Protocol QL  : Question about locations     (Not made)
+    Protocol QL  : Question about locations     (In progress)
     Protocol QS  : Question about STOP Command  (Not made)
     Protocol QBL : Question about block lists   (Not made)
 

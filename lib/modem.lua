@@ -38,6 +38,11 @@ function modem.receiveMessages()
                 rednet.send(id,turtleJobs.Job2MsgStr(td),"AJ")
                 --logFile.logWrite("Sent reply")
             end
+        elseif(protocol == "QL") then -- Protocol QL = Question about location
+            local answerString = ""
+            answerString = posList.getPosListDataFromName(message)
+            logFile.logWrite("answerString",answerString)
+            rednet.send(id,answerString,"AL")
         end
     end
 end

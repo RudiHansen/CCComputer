@@ -105,7 +105,6 @@ function posList.deletePosList(id)
     posList.saveData();
 end
 
-
 function posList.posListData2Str(posListData)
     return posListData.Id ..
            "," ..
@@ -134,6 +133,24 @@ function posList.str2PosListData(text)
     posListData.Face    = fields[6]
 
     return posListData
+end
+
+function posList.getPosListDataFromName(name)
+    logFile.logWrite("in posList.getPosListDataFromName")
+    logFile.logWrite("name",name)
+    logFile.logWrite("#posListDataList",#posListDataList)
+
+    for i=1,#posListDataList do
+        posListData = {}
+        posListData = posListDataList[i]
+
+        logFile.logWrite("Testing posListData.Name",posListData.Name)
+        if(posListData.Name == name)then
+            outLine = posList.posListData2Str(posListData)
+            logFile.logWrite("outLine",outLine)
+            return outLine
+        end
+    end
 end
 
 return posList
