@@ -17,26 +17,26 @@ end
 function modem.receiveMessages()
     while(true) do
         id,message,protocol = rednet.receive() --wait until a message is received
-        logFile.logWrite("modem.receiveMessages()")
-        logFile.logWrite("id",id)
-        logFile.logWrite("message",message)
-        logFile.logWrite("protocol",protocol)
+        --logFile.logWrite("modem.receiveMessages()")
+        --logFile.logWrite("id",id)
+        --logFile.logWrite("message",message)
+        --logFile.logWrite("protocol",protocol)
     
         if(protocol == "S") then -- Protocol S = Status Messages
             turtles.messageToTurtleData(id,message)
             monitor.updateTurtleListOnScreen()
         elseif(protocol == "QB") then -- Protocol QB = Question about Block action
-            logFile.logWrite("Received QB Id=",id)
+            --logFile.logWrite("Received QB Id=",id)
             monitor.askAboutBlock(id,message)
         elseif(protocol == "QJ") then -- Protocol QJ = Question about Turtle Job
-            logFile.logWrite("Received QJ Id=",id)
+            --logFile.logWrite("Received QJ Id=",id)
             local turtleName = turtles.getTurtleName(id)
             if(turtleName~=nil)then
-                logFile.logWrite("turtleName",turtleName)
+                --logFile.logWrite("turtleName",turtleName)
                 local td = turtleJobs.GetJobForTurtle(turtleName)
-                logFile.logWrite("td",td)
+                --logFile.logWrite("td",td)
                 rednet.send(id,turtleJobs.Job2MsgStr(td),"AJ")
-                logFile.logWrite("Sent reply")
+                --logFile.logWrite("Sent reply")
             end
         end
     end

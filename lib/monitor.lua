@@ -13,13 +13,13 @@ local lastTouch     = ""
 function monitor.init()
     mon = peripheral.wrap("right")
     monSizeX, monSizeY = mon.getSize()
-    logFile.logWrite("monSizeX",monSizeX)
-    logFile.logWrite("monSizeY",monSizeY)
+    --logFile.logWrite("monSizeX",monSizeX)
+    --logFile.logWrite("monSizeY",monSizeY)
 end
 
 
 function monitor.screenHandler()
-    logFile.logWrite("In monitor.screenHandler()")
+    --logFile.logWrite("In monitor.screenHandler()")
     monitor.drawMainScreen()
     activeScreen = "MAIN"
 
@@ -31,6 +31,7 @@ function monitor.screenHandler()
         elseif(activeScreen=="MAIN" and lastTouch=="q")then
             lastTouch=""
             monitor.clear()
+            screen.clear()
             error()
         elseif(activeScreen=="TURTLELIST" and lastTouch=="q")then
             lastTouch=""
@@ -42,30 +43,30 @@ function monitor.screenHandler()
 end
 
 function monitor.touchHandler()
-    logFile.logWrite("In monitor.touchHandler()")
+    --logFile.logWrite("In monitor.touchHandler()")
 
     while(true) do
         event, side, x, y = os.pullEvent("monitor_touch")
-        logFile.logWrite("event",event)
-        logFile.logWrite("side",side)
-        logFile.logWrite("x",x)
-        logFile.logWrite("y",y)
+        --logFile.logWrite("event",event)
+        --logFile.logWrite("side",side)
+        --logFile.logWrite("x",x)
+        --logFile.logWrite("y",y)
 
-        logFile.logWrite("activeScreen",activeScreen)
+        -logFile.logWrite("activeScreen",activeScreen)
         if(activeScreen=="MAIN")then
             if(y==3)then
-                logFile.logWrite("Pressed","1")
+                --logFile.logWrite("Pressed","1")
                 lastTouch="1"
             elseif(y==4) then
-                logFile.logWrite("Pressed","2")
+                --logFile.logWrite("Pressed","2")
                 lastTouch="2"
             elseif(y==6) then
-                logFile.logWrite("Pressed","q")
+                --logFile.logWrite("Pressed","q")
                 lastTouch="q"
             end
         elseif(activeScreen=="TURTLELIST")then
             if(y==9)then
-                logFile.logWrite("Pressed","q")
+                --logFile.logWrite("Pressed","q")
                 lastTouch="q"
             end
         end
@@ -122,7 +123,7 @@ function monitor.updateTurtleListOnScreen()
 end
 
 function monitor.askAboutBlock(turtleId,blockName)
-    logFile.logWrite("In monitor.askAboutBlock")
+    --logFile.logWrite("In monitor.askAboutBlock")
     monitor.writeAtPos("Turtle " .. turtleId .. " asks." ,1,15)
     monitor.writeAtPos("What to do with block:"          ,1,16)
     monitor.writeAtPos(blockName                         ,1,17)
@@ -132,13 +133,13 @@ function monitor.askAboutBlock(turtleId,blockName)
 
     event, side, x, y = os.pullEvent("monitor_touch")
     if (x > 0 and x < 10) then
-        logFile.logWrite("rednet.send ",id,"mine")
+        --logFile.logWrite("rednet.send ",id,"mine")
         rednet.send(id,"mine","AB")
     elseif (x > 10 and x < 20) then
-        logFile.logWrite("rednet.send ",id,"ignore")
+        --logFile.logWrite("rednet.send ",id,"ignore")
         rednet.send(id,"ignore","AB")
     elseif (x > 20 and x < 30) then
-        logFile.logWrite("rednet.send ",id,"pass")
+        --logFile.logWrite("rednet.send ",id,"pass")
         rednet.send(id,"pass","AB")
     end
 
