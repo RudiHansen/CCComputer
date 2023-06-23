@@ -52,7 +52,7 @@ function monitor.touchHandler()
         --logFile.logWrite("x",x)
         --logFile.logWrite("y",y)
 
-        -logFile.logWrite("activeScreen",activeScreen)
+        --logFile.logWrite("activeScreen",activeScreen)
         if(activeScreen=="MAIN")then
             if(y==3)then
                 --logFile.logWrite("Pressed","1")
