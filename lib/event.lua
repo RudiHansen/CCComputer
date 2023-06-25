@@ -11,11 +11,11 @@ function event.getAnyEvent()
         return
     end
 
-    logFile.logWrite("screen.getAnyEvent()")
-    logFile.logWrite("event",event)
-    logFile.logWrite("data",data)
-    logFile.logWrite("x",x)
-    logFile.logWrite("y",y)
+    --logFile.logWrite("screen.getAnyEvent()")
+    --logFile.logWrite("event",event)
+    --logFile.logWrite("data",data)
+    --logFile.logWrite("x",x)
+    --logFile.logWrite("y",y)
 
     return event,data,x,y
 end

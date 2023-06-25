@@ -39,6 +39,8 @@ turtles.loadData()
 --end
 
 -- Finalize script
+logFile.logWrite("Finalize main")
 turtles.saveData()
+turtleJobs.saveData()
 monitor.clear()
 logFile.logFileClose()

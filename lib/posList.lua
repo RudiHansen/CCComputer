@@ -55,52 +55,52 @@ function posList.getPosListDataList()
 end
 
 function posList.editPosList(text)
-    logFile.logWrite("in posList.editPosList")
-    logFile.logWrite("text",text)
+    --logFile.logWrite("in posList.editPosList")
+    --logFile.logWrite("text",text)
 
     local posListDataEdit = {}
     posListDataEdit = posList.str2PosListData(text)
-    logFile.logWrite("posListDataEdit",posListDataEdit)
+    --logFile.logWrite("posListDataEdit",posListDataEdit)
 
     posListData   = {}
-    logFile.logWrite("posListDataEdit.Id",posListDataEdit.Id)
-    logFile.logWrite("posListDataList[tonumber(posListDataEdit.Id)]",posListDataList[tonumber(posListDataEdit.Id)])
+    --logFile.logWrite("posListDataEdit.Id",posListDataEdit.Id)
+    --logFile.logWrite("posListDataList[tonumber(posListDataEdit.Id)]",posListDataList[tonumber(posListDataEdit.Id)])
 
     posListData         = posListDataList[tonumber(posListDataEdit.Id)]
-    logFile.logWrite("posListData",posListData)
+    --logFile.logWrite("posListData",posListData)
 
     posListData.Name    = posListDataEdit.Name
     posListData.PosX    = posListDataEdit.PosX
     posListData.PosZ    = posListDataEdit.PosZ
     posListData.PosY    = posListDataEdit.PosY
     posListData.Face    = posListDataEdit.Face
-    logFile.logWrite("posListData",posListData)
+    --logFile.logWrite("posListData",posListData)
 
     posList.saveData();
 end
 
 function posList.addPosList(text)
-    logFile.logWrite("in posList.editPosList")
-    logFile.logWrite("text",text)
-    logFile.logWrite("Before #posListDataList",#posListDataList)
+    --logFile.logWrite("in posList.editPosList")
+    --logFile.logWrite("text",text)
+    --logFile.logWrite("Before #posListDataList",#posListDataList)
 
     local posListDataAdd = {}
     posListDataAdd = posList.str2PosListData(text)
-    logFile.logWrite("posListDataAdd",posListDataAdd)
+    --logFile.logWrite("posListDataAdd",posListDataAdd)
 
     table.insert(posListDataList,posListDataAdd)
-    logFile.logWrite("After #posListDataList",#posListDataList)
+    --logFile.logWrite("After #posListDataList",#posListDataList)
 
     posList.saveData();
 end
 
 function posList.deletePosList(id)
-    logFile.logWrite("in posList.deletePosList")
-    logFile.logWrite("id",id)
-    logFile.logWrite("Before #posListDataList",#posListDataList)
+    --logFile.logWrite("in posList.deletePosList")
+    --logFile.logWrite("id",id)
+    --logFile.logWrite("Before #posListDataList",#posListDataList)
 
     table.remove(posListDataList,tonumber(id))
-    logFile.logWrite("After #posListDataList",#posListDataList)
+    --logFile.logWrite("After #posListDataList",#posListDataList)
 
     posList.saveData();
 end
@@ -136,18 +136,18 @@ function posList.str2PosListData(text)
 end
 
 function posList.getPosListDataFromName(name)
-    logFile.logWrite("in posList.getPosListDataFromName")
-    logFile.logWrite("name",name)
-    logFile.logWrite("#posListDataList",#posListDataList)
+    --logFile.logWrite("in posList.getPosListDataFromName")
+    --logFile.logWrite("name",name)
+    --logFile.logWrite("#posListDataList",#posListDataList)
 
     for i=1,#posListDataList do
         posListData = {}
         posListData = posListDataList[i]
 
-        logFile.logWrite("Testing posListData.Name",posListData.Name)
+        --logFile.logWrite("Testing posListData.Name",posListData.Name)
         if(posListData.Name == name)then
             outLine = posList.posListData2Str(posListData)
-            logFile.logWrite("outLine",outLine)
+            --logFile.logWrite("outLine",outLine)
             return outLine
         end
     end

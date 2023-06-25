@@ -35,7 +35,7 @@ function screen.screenHandler()
             term.clear()
             term.setCursorPos(1,1)
             return
-        elseif(activeScreen=="POSLIST" and keys.getName(key)=="b")then
+        elseif(activeScreen=="POSLIST" or activeScreen=="TURTLEJOBLIST" and keys.getName(key)=="b")then
             screen.drawMainScreen()
             activeScreen = "MAIN"
         elseif(activeScreen=="POSLIST" and keys.getName(key)=="e")then
@@ -90,13 +90,25 @@ function screen.drawPosList()
 end
 
 function screen.drawTurtleJobList()
+    term.clear()
+    term.setTextColor(colors.white)
+
+    screen.centerTextOnLine("********** TurtleJob List **********",1)
+    screen.writeAtPos("Id"          ,1,3)
+    screen.writeAtPos("TurtleName"  ,4,3)
+    screen.writeAtPos("Status"      ,15,3)
+    screen.writeAtPos("JobType"     ,22,3)
+
+    screen.drawLineOnLine(18)
+    screen.centerTextOnLine("B-BACK E-Edit D-Delete A-Add",19)
+    screen.writeTurtleJobListToScreen()
 end
 
 function screen.printPosListToScreen()
     local startLine = 4
     local posList   = posList.getPosListDataList()
     local posListData = {}
-    logFile.logWrite("#posList",#posList)
+    --logFile.logWrite("#posList",#posList)
 
     if(activeScreen=="POSLIST") then
         --logFile.logWrite("activeScreen",activeScreen)
@@ -121,36 +133,60 @@ function screen.writePosListDataOnLine(posListData,line)
     screen.writeAtPos(posListData.Face,34,line)
 end
 
+function screen.writeTurtleJobListToScreen()
+    local startLine = 4
+    local turtleJobData = {}
+    local data          = turtleJobs.GetTurtleJobsDataList()
+    --logFile.logWrite("#data",#data)
+    
+    if(activeScreen=="TURTLEJOBLIST") then
+        for i=1,#data do
+            turtleJobData = {}
+            turtleJobData = data[i]
+            --logFile.logWrite("turtleJobData",turtleJobData)
+            screen.writeTurtleJobDataOnLine(turtleJobData,startLine)
+            startLine = startLine + 1
+        end
+    end
+end
+
+function screen.writeTurtleJobDataOnLine(turtleJobData,line)
+    screen.writeAtPos(turtleJobData.Id,         1,line)
+    screen.writeAtPos(turtleJobData.TurtleName, 4,line)
+    screen.writeAtPos(turtleJobData.Status,     15,line)
+    screen.writeAtPos(turtleJobData.JobType,    22,line)
+end
+
 function screen.editPosList()
-    logFile.logWrite("In screen.editPosList")
+    --logFile.logWrite("In screen.editPosList")
     screen.writeAtPos("Enter the edited record, fields separated with ,",1,16)
     screen.writeAtPos("Record : ",1,17)
     local input = read()
     screen.clearLine(16)
     screen.clearLine(17)
-    logFile.logWrite("input",input)
+    --logFile.logWrite("input",input)
     posList.editPosList(input)
 end
 
 function screen.addPosList()
-    logFile.logWrite("In screen.addPosList")
+    --logFile.logWrite("In screen.addPosList")
     screen.writeAtPos("Enter the new record, fields separated with ,",1,16)
     screen.writeAtPos("Record : ",1,17)
     local input = read()
     screen.clearLine(16)
     screen.clearLine(17)
-    logFile.logWrite("input",input)
+    --logFile.logWrite("input",input)
     posList.addPosList(input)
 end
 
 function screen.deletePosList()
-    logFile.logWrite("In screen.deletePosList")
+    --logFile.logWrite("In screen.deletePosList")
     screen.writeAtPos("Enter Id of the record to delete",1,16)
     screen.writeAtPos("Record : ",1,17)
     local input = read()
     screen.clearLine(16)
     screen.clearLine(17)
-    logFile.logWrite("input",input)
+    --logFile.logWrite("input",input)
     posList.deletePosList(input)
 end
 

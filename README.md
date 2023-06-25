@@ -16,7 +16,11 @@ TurtleData
 TurtleId    Name    Status  PosX    PosZ    PosY    PosF    Inv Fuel
 
 TurtleJobData
-TurtleId    Status  JobType FromX   FromZ   FromY   ToX ToZ ToY Direction   AxisPriority
+Id  TurtleName  Status  JobType FromX   FromZ   FromY   ToX ToZ ToY Direction   AxisPriority
+                NEW     moveToPos
+                RUN     traverseArea
+                DONE    moveHome
+
 
 # Next Step
 Still Missing:

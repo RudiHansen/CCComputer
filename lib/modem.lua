@@ -25,6 +25,10 @@ function modem.receiveMessages()
         if(protocol == "S") then -- Protocol S = Status Messages
             turtles.messageToTurtleData(id,message)
             monitor.updateTurtleListOnScreen()
+        elseif(protocol == "SJ") then -- Protocol ST = Turtle job status
+            --logFile.logWrite("modem.receiveMessages","ST",message)
+            turtleJobs.updateTurtleJobStatus(message)
+            screen.writeTurtleJobListToScreen()
         elseif(protocol == "QB") then -- Protocol QB = Question about Block action
             --logFile.logWrite("Received QB Id=",id)
             monitor.askAboutBlock(id,message)
@@ -41,7 +45,7 @@ function modem.receiveMessages()
         elseif(protocol == "QL") then -- Protocol QL = Question about location
             local answerString = ""
             answerString = posList.getPosListDataFromName(message)
-            logFile.logWrite("answerString",answerString)
+            --logFile.logWrite("answerString",answerString)
             rednet.send(id,answerString,"AL")
         end
     end
