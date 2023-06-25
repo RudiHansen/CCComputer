@@ -141,6 +141,21 @@ function turtles.getTurtleData(id)
     return td
 end
 
+function turtles.getTurtleDataRecNum(num)
+    --logFile.logWrite("turtles.getTurtleDataRecNum",num)
+    local counter = 1
+    for i=1,10 do
+        td = turtlesTable[i]
+        --logFile.logWrite("td",td)
+        if(td ~= nil)then
+            if(counter == num)then
+                return td
+            end
+            counter = counter + 1
+        end
+    end
+end
+
 function turtles.getTurtleName(id)
     --logFile.logWrite("turtles.getTurtleName Id=",id)
     --logFile.logWrite(turtlesTable)    

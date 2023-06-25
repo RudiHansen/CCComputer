@@ -10,8 +10,8 @@ local activeScreen
 
 function screen.init()
     termSizeX, termSizeY = term.getSize()
-    --logFile.logWrite("termSizeX",termSizeX)
-    --logFile.logWrite("termSizeY",termSizeY)
+    logFile.logWrite("termSizeX",termSizeX)
+    logFile.logWrite("termSizeY",termSizeY)
 end
 
 function screen.screenHandler()
@@ -50,6 +50,18 @@ function screen.screenHandler()
             screen.deletePosList()
             activeScreen = "POSLIST"
             screen.drawPosList()
+        elseif(activeScreen=="TURTLEJOBLIST" and keys.getName(key)=="e")then
+            screen.editTurtleJobList()
+            activeScreen = "TURTLEJOBLIST"
+            screen.drawTurtleJobList()
+        elseif(activeScreen=="TURTLEJOBLIST" and keys.getName(key)=="a")then
+            screen.addTurtleJobList()
+            activeScreen = "TURTLEJOBLIST"
+            screen.drawTurtleJobList()
+        elseif(activeScreen=="TURTLEJOBLIST" and keys.getName(key)=="d")then
+            screen.deleteTurtleJobList()
+            activeScreen = "TURTLEJOBLIST"
+            screen.drawTurtleJobList()
         end
         screen.yield()
     end
@@ -188,6 +200,60 @@ function screen.deletePosList()
     screen.clearLine(17)
     --logFile.logWrite("input",input)
     posList.deletePosList(input)
+end
+
+function screen.editTurtleJobList()
+    --logFile.logWrite("In screen.editTurtleJobList")
+    screen.writeAtPos("You can only edit status on record to NEW",1,15)
+    screen.writeAtPos("Enter the record to change status on",1,16)
+    screen.writeAtPos("Record : ",1,17)
+    local input = read()
+    screen.clearLine(15)
+    screen.clearLine(16)
+    screen.clearLine(17)
+    --logFile.logWrite("input",input)
+    turtleJobs.updateTurtleJobStatus(input..",NEW")
+end
+
+-- This method has to ask the user for an area to mine, and then divide that area into
+-- jobs for all the turtles to work on.
+-- So if there are 2 turtles, each of them had to mine part of the area.
+function screen.addTurtleJobList()
+    --logFile.logWrite("In screen.addTurtleJobList")
+    term.clear()
+    term.setTextColor(colors.white)
+
+    screen.centerTextOnLine("********** TurtleJob Add **********",1)
+    screen.writeAtPos("Enter start of the area to mine, x,z,y,face",1,3)
+    screen.writeAtPos("Start :",1,4)
+    local startArea = read()
+    startArea = util.splitString(startArea)
+    --logFile.logWrite("startArea",startArea)
+
+    screen.writeAtPos("Enter end of the area to mine, x,z,y,face",1,5)
+    screen.writeAtPos("Start :",1,6)
+    local endArea = read()
+    endArea = util.splitString(endArea)
+    --logFile.logWrite("endArea",endArea)
+
+    screen.writeAtPos("Enter number of turtles available",1,7)
+    screen.writeAtPos("#Turtles :",1,8)
+    local numTurtles = read()
+    numTurtles = tonumber(numTurtles)
+    --logFile.logWrite("numTurtles",numTurtles)
+
+    turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,numTurtles)
+end
+
+function screen.deleteTurtleJobList()
+    --logFile.logWrite("In screen.deleteTurtleJobList")
+    screen.writeAtPos("Enter Id of the record to delete",1,16)
+    screen.writeAtPos("Record : ",1,17)
+    local input = read()
+    screen.clearLine(16)
+    screen.clearLine(17)
+    --logFile.logWrite("input",input)
+    turtleJobs.deleteTurtleJobList(input)
 end
 
 function screen.centerTextOnLine(text,line)

@@ -46,4 +46,12 @@ function util.stringLen(txt,length)
     return txt
 end
 
+function util.splitString(text)
+    fields = {}
+    for field in string.gmatch(text, "[^,]+") do
+        table.insert(fields, field)
+    end
+    return fields
+end
+
 return util

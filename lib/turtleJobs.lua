@@ -67,7 +67,6 @@ function turtleJobs.saveData()
     outFile.close()
 end
 
-
 function turtleJobs.GetJobForTurtle(turtleName)
     --logFile.logWrite("turtleJobs.GetJobForTurtle ",turtleName)
     for i=1,#turtleJobsDataList do
@@ -116,6 +115,60 @@ function turtleJobs.updateTurtleJobStatus(message)
     turtleJobsData = turtleJobs.GetJobFromId(fields[1])
     turtleJobsData.Status = fields[2]
 end
+
+function turtleJobs.deleteTurtleJobList(id)
+    --logFile.logWrite("in posList.deleteTurtleJobList")
+    --logFile.logWrite("id",id)
+    --logFile.logWrite("Before #turtleJobsDataList",#turtleJobsDataList)
+
+    table.remove(turtleJobsDataList,tonumber(id))
+    --logFile.logWrite("After #turtleJobsDataList",#turtleJobsDataList)
+end
+
+function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,numTurtles)
+    --logFile.logWrite("In turtleJobs.addTurtleJobToSeveralTurtles")
+    --logFile.logWrite("startArea",startArea)
+    --logFile.logWrite("endArea",endArea)
+    --logFile.logWrite("numTurtles",numTurtles)
+    local nextJobNum = #turtleJobsDataList + 1
+    --logFile.logWrite("nextJobNum",nextJobNum)
+
+    totalY      = endArea[3] - startArea[3]
+    partY       = math.floor(totalY / numTurtles)
+    remainderY  = totalY - (partY * numTurtles)
+    --logFile.logWrite("totalY",totalY)
+    --logFile.logWrite("partY",partY)
+    --logFile.logWrite("partY",remainderY)
+
+    startY  = startArea[3]
+    endY    = startY + partY + remainderY
+
+    for i=1,numTurtles do
+        turtleData                  = turtles.getTurtleDataRecNum(i)
+        turtleJobsData              = {}
+        turtleJobsData.Id           = nextJobNum
+        turtleJobsData.TurtleName   = turtleData.Name
+        turtleJobsData.Status       = "NEW"
+        turtleJobsData.JobType      = "traverseArea"
+        turtleJobsData.x1           = startArea[1]
+        turtleJobsData.z1           = startArea[2]
+        turtleJobsData.y1           = startY
+        turtleJobsData.f1           = startArea[4]
+        turtleJobsData.x2           = endArea[1]
+        turtleJobsData.z2           = endArea[2]
+        turtleJobsData.y2           = endY
+        turtleJobsData.f2           = endArea[4]
+        turtleJobsData.axisPriority = "xyz"
+        table.insert(turtleJobsDataList,turtleJobsData)
+        --logFile.logWrite("insert turtleJobsData",turtleJobsData)
+        startY      = endY + 1
+        endY        = endY + partY
+        nextJobNum  = nextJobNum + 1
+    end
+
+
+end
+
 
 function turtleJobs.Job2MsgStr(turtleJobData)
     if(turtleJobData == nil)then
