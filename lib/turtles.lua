@@ -6,6 +6,91 @@
 local turtles = {}
 
 local turtlesTable = {}
+local dataFileNameTurtles = "turtles.dat"
+
+function turtles.loadData()
+    --logFile.logWrite("turtles.loadData()")
+    local fields = {}
+    
+    -- Open file for reading
+    local file = fs.open(dataFileNameTurtles,   "r")
+
+    for line in file.readLine do
+        turtlesData         = {}
+        turtlesData = turtles.str2TurtlesData(line)
+
+        --logFile.logWrite("table.insert",turtlesData.Id)
+        --logFile.logWrite("table.insert",turtlesData.Name)
+        turtlesTable[tonumber(turtlesData.Id)] = turtlesData        
+    end
+    --logFile.logWrite("turtlesTable",turtlesTable)
+
+    -- Close file
+    file:close()
+end
+
+function turtles.saveData()
+    --logFile.logWrite("In turtles.saveData()")    
+    -- Open file for write
+    local outFile = fs.open(dataFileNameTurtles,   "w")
+    local outLine = ""
+
+    -- Loop all records in posListDataList, and write to file
+    --logFile.logWrite("#turtlesTable",#turtlesTable)    
+    for i=1,10 do
+        turtlesData = {}
+        turtlesData = turtlesTable[i]
+        --logFile.logWrite("turtlesData",turtlesData)
+        if(turtlesData ~= nil)then
+            outLine = turtles.turtlesData2Str(turtlesData)
+            --logFile.logWrite("outLine",outLine)
+            outFile.writeLine(outLine)
+        end
+    end
+    outFile.flush()
+
+    -- Close file
+    outFile.close()
+end
+
+function turtles.turtlesData2Str(turtlesData)
+    return turtlesData.Id ..
+           "," ..
+           turtlesData.Name ..
+           "," ..
+           turtlesData.Status ..
+           "," ..
+           turtlesData.PosX ..
+           "," ..
+           turtlesData.PosZ ..
+           "," ..
+           turtlesData.PosY ..
+           "," ..
+           turtlesData.PosF ..
+           "," ..
+           turtlesData.Inv ..
+           "," ..
+           turtlesData.Fuel
+end
+
+function turtles.str2TurtlesData(text)
+    fields = {}
+    for field in string.gmatch(text, "[^,]+") do
+        table.insert(fields, field)
+    end
+    posListData         = {}
+    posListData.Id      = fields[1]
+    posListData.Name    = fields[2]
+    posListData.Status  = fields[3]
+    posListData.PosX    = fields[4]
+    posListData.PosZ    = fields[5]
+    posListData.PosY    = fields[6]
+    posListData.PosF    = fields[7]
+    posListData.Inv     = fields[8]
+    posListData.Fuel    = fields[9]
+
+    return posListData
+end
 
 function turtles.addFromStatusMessage(message)
     local turtleData = {}
@@ -31,6 +116,7 @@ function turtles.messageToTurtleData(id,message)
     end
 
     local turtleData = {
+                    Id      = id,
                     Name    = messageSplit[2],
                     Status  = messageSplit[9],
                     PosX    = messageSplit[3],
@@ -47,7 +133,12 @@ function turtles.messageToTurtleData(id,message)
 end
 
 function turtles.getTurtleData(id)
-    return turtlesTable[id]
+    --logFile.logWrite("In turtles.getTurtleData",id)
+    --logFile.logWrite("turtlesTable",turtlesTable)
+    td = turtlesTable[id]
+    --logFile.logWrite("td",td)
+
+    return td
 end
 
 function turtles.getTurtleName(id)

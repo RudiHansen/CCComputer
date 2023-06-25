@@ -28,11 +28,12 @@ function monitor.screenHandler()
             lastTouch=""
             monitor.drawTurtleListScreen()
             activeScreen = "TURTLELIST"
+            monitor.updateTurtleListOnScreen()
         elseif(activeScreen=="MAIN" and lastTouch=="q")then
             lastTouch=""
             monitor.clear()
             screen.clear()
-            error()
+            return
         elseif(activeScreen=="TURTLELIST" and lastTouch=="q")then
             lastTouch=""
             monitor.drawMainScreen()

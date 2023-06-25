@@ -24,6 +24,7 @@ monitor.clear()
 screen.clear()
 turtleJobs.loadData()
 posList.loadData()
+turtles.loadData()
 
 
 --monitor.drawMainScreen()
@@ -38,5 +39,6 @@ posList.loadData()
 --end
 
 -- Finalize script
+turtles.saveData()
 monitor.clear()
 logFile.logFileClose()

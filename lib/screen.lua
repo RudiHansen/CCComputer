@@ -27,11 +27,14 @@ function screen.screenHandler()
         if(activeScreen=="MAIN" and keys.getName(key)=="one")then
             activeScreen = "POSLIST"
             screen.drawPosList()
+        elseif(activeScreen=="MAIN" and keys.getName(key)=="two")then
+            activeScreen = "TURTLEJOBLIST"
+            screen.drawTurtleJobList()
         elseif(activeScreen=="MAIN" and keys.getName(key)=="q")then
             monitor.clear()
             term.clear()
             term.setCursorPos(1,1)
-            error()
+            return
         elseif(activeScreen=="POSLIST" and keys.getName(key)=="b")then
             screen.drawMainScreen()
             activeScreen = "MAIN"
@@ -64,7 +67,7 @@ function screen.drawMainScreen()
 
     screen.centerTextOnLine("********** MAIN **********",1)
     screen.writeAtPos("1 : Show Pos List",10,3)
-    screen.writeAtPos("2 : Show something new",10,4)
+    screen.writeAtPos("2 : Show Turtle Job List",10,4)
     screen.writeAtPos("q : Quit",10,6)
 end
 
@@ -84,6 +87,9 @@ function screen.drawPosList()
     screen.centerTextOnLine("B-BACK E-Edit D-Delete A-Add",19)
 
     screen.printPosListToScreen()    
+end
+
+function screen.drawTurtleJobList()
 end
 
 function screen.printPosListToScreen()
