@@ -34,6 +34,7 @@ New JobType : PlaceTorchArea, place torches in an area with a giving spacing, to
 Modem protocol, there is a problem when multiple turtles tries to communicate with the computer simultaneously.
 Looks like if one Turtle is asking about a block action, then while an answer is not sent other questions are not answered.
 So seems like I need to come up with some sort of a queuing system.
+*** Temp Fix for this could be some way of sending a blank message to a turtle, but I would also have to change all places in the code where modem.send is called to change turtles status to "COMM" so I can see the turtle is waiting for an reply (Done set status COM?)***
 
 (Done)Look into the process about sending jobs to turtles.
 I would like to be able to give the computer an area to clear, and then it should based on how meany turtles are available be able to distribute jobs to them.
