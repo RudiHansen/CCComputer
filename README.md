@@ -31,7 +31,9 @@ New JobType : ReplaceBlockArea, replace block in an area under the Turtle, like 
 
 New JobType : PlaceTorchArea, place torches in an area with a giving spacing, to prevent mob spawning.
 
-
+Modem protocol, there is a problem when multiple turtles tries to communicate with the computer simultaneously.
+Looks like if one Turtle is asking about a block action, then while an answer is not sent other questions are not answered.
+So seems like I need to come up with some sort of a queuing system.
 
 (Done)Look into the process about sending jobs to turtles.
 I would like to be able to give the computer an area to clear, and then it should based on how meany turtles are available be able to distribute jobs to them.
