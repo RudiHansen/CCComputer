@@ -25,13 +25,20 @@ Id  TurtleName  Status  JobType FromX   FromZ   FromY   ToX ToZ ToY Direction   
 # Next Step
 Still Missing:
 
-Look into the process about sending jobs to turtles.
+Also need to work on block avoidance, it is simply not good enough as it is now.
+
+New JobType : ReplaceBlockArea, replace block in an area under the Turtle, like replacing all non stone blocks with stone.
+
+New JobType : PlaceTorchArea, place torches in an area with a giving spacing, to prevent mob spawning.
+
+
+
+(Done)Look into the process about sending jobs to turtles.
 I would like to be able to give the computer an area to clear, and then it should based on how meany turtles are available be able to distribute jobs to them.
 
 
 
 
-Also need to work on block avoidance, it is simply not good enough as it is now.
 
 
 I was thinking that perhaps I should look into separating thinks into different processes that may be able to run at the same time, using parallel.waitForAll
