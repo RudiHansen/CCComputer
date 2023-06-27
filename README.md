@@ -27,6 +27,8 @@ Still Missing:
 
 Also need to work on block avoidance, it is simply not good enough as it is now.
 
+Implement system for Turtles to synchronies block lists.
+
 New JobType : ReplaceBlockArea, replace block in an area under the Turtle, like replacing all non stone blocks with stone.
 
 New JobType : PlaceTorchArea, place torches in an area with a giving spacing, to prevent mob spawning.
@@ -36,6 +38,9 @@ Looks like if one Turtle is asking about a block action, then while an answer is
 So seems like I need to come up with some sort of a queuing system.
 *** No the Temp Fix will not work**
 *** Temp Fix for this could be some way of sending a blank message to a turtle, but I would also have to change all places in the code where modem.send is called to change turtles status to "COMM" so I can see the turtle is waiting for an reply (Done set status COM?)**
+
+Pocket Computer, can it be used for anything?
+Perhaps it could be used to manually control the Turtle if it is stuck?
 
 (Done)Look into the process about sending jobs to turtles.
 I would like to be able to give the computer an area to clear, and then it should based on how meany turtles are available be able to distribute jobs to them.
