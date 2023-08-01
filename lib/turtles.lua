@@ -12,6 +12,12 @@ function turtles.loadData()
     --logFile.logWrite("turtles.loadData()")
     local fields = {}
     
+    -- Check if file exists.
+    local result = fs.exists(dataFileNameTurtles)
+    if(result==false)then
+        return
+    end
+
     -- Open file for reading
     local file = fs.open(dataFileNameTurtles,   "r")
 

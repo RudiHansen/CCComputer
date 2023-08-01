@@ -14,6 +14,12 @@ function posList.loadData()
     --logFile.logWrite("posList.loadData()")
     local fields = {}
     
+    -- Check if file exists.
+    local result = fs.exists(dataFileNamePosList)
+    if(result==false)then
+        return
+    end
+
     -- Open file for reading
     local file = fs.open(dataFileNamePosList,   "r")
 

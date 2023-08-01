@@ -11,7 +11,7 @@ local modem = {}
 local status = "Idle"
 
 function modem.init()
-    rednet.open("back") --enable the modem attached to the back of the PC
+    rednet.open("top") --enable the modem attached to the back of the PC
 end
 
 function modem.receiveMessages()
