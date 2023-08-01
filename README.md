@@ -25,6 +25,9 @@ Id  TurtleName  Status  JobType FromX   FromZ   FromY   ToX ToZ ToY Direction   
 # Next Step
 Still Missing:
 
+Possible error in screen.screenHandler()
+It seems that its not possible to add a new location to the posList, right now when i press a to add nothing happens.
+
 Also need to work on block avoidance, it is simply not good enough as it is now.
 
 Implement system for Turtles to synchronies block lists.

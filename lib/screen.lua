@@ -21,7 +21,8 @@ function screen.screenHandler()
 
     while(true) do
         local event, key, isHeld = os.pullEvent("key")
-        --logFile.logWrite("Key pressed=",keys.getName(key))
+        logFile.logWrite("Key pressed=",keys.getName(key))
+        logFile.logWrite("activeScreen",activeScreen)
         os.pullEvent("char") -- Pull the key press from the buffer so it does not show up on screen
 
         if(activeScreen=="MAIN" and keys.getName(key)=="one")then
@@ -43,6 +44,7 @@ function screen.screenHandler()
             activeScreen = "POSLIST"
             screen.drawPosList()
         elseif(activeScreen=="POSLIST" and keys.getName(key)=="a")then
+            logFile.logWrite("Calling addPosList")
             screen.addPosList()
             activeScreen = "POSLIST"
             screen.drawPosList()
@@ -181,13 +183,13 @@ function screen.editPosList()
 end
 
 function screen.addPosList()
-    --logFile.logWrite("In screen.addPosList")
+    logFile.logWrite("In screen.addPosList")
     screen.writeAtPos("Enter the new record, fields separated with ,",1,16)
     screen.writeAtPos("Record : ",1,17)
     local input = read()
     screen.clearLine(16)
     screen.clearLine(17)
-    --logFile.logWrite("input",input)
+    logFile.logWrite("input",input)
     posList.addPosList(input)
 end
 
