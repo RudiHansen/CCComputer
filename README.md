@@ -32,6 +32,11 @@ Also need to work on block avoidance, it is simply not good enough as it is now.
 
 Implement system for Turtles to synchronies block lists.
 
+New JobType : FillBlocksArea, Go through an area and put down block.
+Think the first version should assume the area is cleared, and only put down one block type.
+Think it has to go to an X,Z and then go down to lowest Y point, and then go up til top Y and place blocks.
+Needs to handle 2 types of blocks, like Stone and Dirt, and fill Stone first and Dirt last 3 levels.
+
 New JobType : ReplaceBlockArea, replace block in an area under the Turtle, like replacing all non stone blocks with stone.
 
 New JobType : PlaceTorchArea, place torches in an area with a giving spacing, to prevent mob spawning.
