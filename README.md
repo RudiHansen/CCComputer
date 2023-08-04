@@ -25,6 +25,12 @@ Id  TurtleName  Status  JobType FromX   FromZ   FromY   ToX ToZ ToY Direction   
 # Next Step
 Still Missing:
 
+Make it possible when dividing jobs to multiple turtles, to select if they should work horizontally or vertically.
+
+When creating or changing job data, jobs should be saved. Right now jobs are only saved on program exit, and that gives problems.
+
+Not sure if this is possible, but would also be nice if turtles reported back the process of a job, so if the turtle was stopped it could resume.
+
 Possible error in screen.screenHandler()
 It seems that its not possible to add a new location to the posList, right now when i press a to add nothing happens.
 
