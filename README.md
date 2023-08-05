@@ -27,8 +27,6 @@ Still Missing:
 
 Make it possible when dividing jobs to multiple turtles, to select if they should work horizontally or vertically.
 
-When creating or changing job data, jobs should be saved. Right now jobs are only saved on program exit, and that gives problems.
-
 Change to Edit turtle job, I would like to be able to change the Job data, like changing the starting or ending coordinates.
 
 Not sure if this is possible, but would also be nice if turtles reported back the process of a job, so if the turtle was stopped it could resume.
