@@ -120,6 +120,7 @@ function turtleJobs.updateTurtleJobStatus(message)
     end
     turtleJobsData = turtleJobs.GetJobFromId(fields[1])
     turtleJobsData.Status = fields[2]
+    turtleJobs.saveData()
 end
 
 function turtleJobs.deleteTurtleJobList(id)
@@ -128,6 +129,7 @@ function turtleJobs.deleteTurtleJobList(id)
     --logFile.logWrite("Before #turtleJobsDataList",#turtleJobsDataList)
 
     table.remove(turtleJobsDataList,tonumber(id))
+    turtleJobs.saveData()
     --logFile.logWrite("After #turtleJobsDataList",#turtleJobsDataList)
 end
 
@@ -171,8 +173,7 @@ function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,numTurtles)
         endY        = endY + partY
         nextJobNum  = nextJobNum + 1
     end
-
-
+    turtleJobs.saveData()
 end
 
 
