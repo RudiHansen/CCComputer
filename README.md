@@ -25,6 +25,10 @@ Id  TurtleName  Status  JobType FromX   FromZ   FromY   ToX ToZ ToY Direction   
 # Next Step
 Still Missing:
 
+I would like the computer to send me a notification on my phone, when ewer the Turtle is stuck, or done working.
+So I need the computer to save a file when there is a notification, and then use powerShell to send a notification.
+Look at the C:\Spil\SendNotificationIFTTTT.ps1 example.
+
 Make it possible when dividing jobs to multiple turtles, to select if they should work horizontally or vertically.
 
 Change to Edit turtle job, I would like to be able to change the Job data, like changing the starting or ending coordinates.
