@@ -131,6 +131,7 @@ function monitor.askAboutBlock(turtleId,blockName)
     monitor.writeAtPos("mine"                            ,1,18)
     monitor.writeAtPos("ignore"                          ,10,18)
     monitor.writeAtPos("pass"                            ,20,18)
+    monitor.writeAtPos("secure"                          ,30,18)
 
     event, side, x, y = os.pullEvent("monitor_touch")
     if (x > 0 and x < 10) then
@@ -142,6 +143,9 @@ function monitor.askAboutBlock(turtleId,blockName)
     elseif (x > 20 and x < 30) then
         --logFile.logWrite("rednet.send ",id,"pass")
         rednet.send(id,"pass","AB")
+    elseif (x > 30 and x < 39) then
+        --logFile.logWrite("rednet.send ",id,"secure")
+        rednet.send(id,"secure","AB")
     end
 
     monitor.clearLine(15)
