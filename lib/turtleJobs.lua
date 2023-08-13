@@ -133,7 +133,7 @@ function turtleJobs.deleteTurtleJobList(id)
     --logFile.logWrite("After #turtleJobsDataList",#turtleJobsDataList)
 end
 
-function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,numTurtles)
+function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,splitAxis,numTurtles)
     --logFile.logWrite("In turtleJobs.addTurtleJobToSeveralTurtles")
     --logFile.logWrite("startArea",startArea)
     --logFile.logWrite("endArea",endArea)
@@ -141,15 +141,31 @@ function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,numTurtles)
     local nextJobNum = #turtleJobsDataList + 1
     --logFile.logWrite("nextJobNum",nextJobNum)
 
-    totalY      = endArea[3] - startArea[3]
-    partY       = math.floor(totalY / numTurtles)
-    remainderY  = totalY - (partY * numTurtles)
-    --logFile.logWrite("totalY",totalY)
-    --logFile.logWrite("partY",partY)
-    --logFile.logWrite("partY",remainderY)
+    splitAxis = util.setDefaultValueIfEmpty(splitAxis,"y")
 
-    startY  = startArea[3]
-    endY    = startY + partY + remainderY
+    local totalDistance     = 0
+    local partDistance      = 0
+    local remainderDistance = 0
+    local startPos          = 0
+    local endPos            = 0
+
+    if(splitAxis=="y")then
+        totalDistance       = endArea[3] - startArea[3]
+        partDistance        = math.floor(totalDistance / numTurtles)
+        remainderDistance   = totalDistance - (partDistance * numTurtles)
+        startPos            = startArea[3]
+        endPos              = startPos + partDistance + remainderDistance
+    elseif(splitAxis=="x")then
+        totalDistance     = endArea[1] - startArea[1]
+        partDistance      = math.floor(totalDistance / numTurtles)
+        remainderDistance = totalDistance - (partDistance * numTurtles)
+        startPos            = startArea[1]
+        endPos              = startPos + partDistance + remainderDistance
+    else
+        logFile.logWrite("ERROR! From turtleJobs.addTurtleJobToSeveralTurtles")
+        logFile.logWrite("splitAxis=",splitAxis," value not allowed.")
+    end
+
 
     for i=1,numTurtles do
         turtleData                  = turtles.getTurtleDataRecNum(i)
@@ -158,19 +174,34 @@ function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,numTurtles)
         turtleJobsData.TurtleName   = turtleData.Name
         turtleJobsData.Status       = "NEW"
         turtleJobsData.JobType      = "traverseArea"
-        turtleJobsData.x1           = startArea[1]
-        turtleJobsData.z1           = startArea[2]
-        turtleJobsData.y1           = startY
-        turtleJobsData.f1           = startArea[4]
-        turtleJobsData.x2           = endArea[1]
-        turtleJobsData.z2           = endArea[2]
-        turtleJobsData.y2           = endY
-        turtleJobsData.f2           = endArea[4]
+        if(splitAxis=="y")then
+            turtleJobsData.x1           = startArea[1]
+            turtleJobsData.z1           = startArea[2]
+            turtleJobsData.y1           = startPos
+            turtleJobsData.f1           = startArea[4]
+            turtleJobsData.x2           = endArea[1]
+            turtleJobsData.z2           = endArea[2]
+            turtleJobsData.y2           = endPos
+            turtleJobsData.f2           = endArea[4]
+        elseif(splitAxis=="x")then
+            turtleJobsData.x1           = startPos
+            turtleJobsData.z1           = startArea[2]
+            turtleJobsData.y1           = startArea[3]
+            turtleJobsData.f1           = startArea[4]
+            turtleJobsData.x2           = endPos
+            turtleJobsData.z2           = endArea[2]
+            turtleJobsData.y2           = endArea[3]
+            turtleJobsData.f2           = endArea[4]
+        else
+            logFile.logWrite("ERROR2! From turtleJobs.addTurtleJobToSeveralTurtles")
+            logFile.logWrite("splitAxis=",splitAxis," value not allowed.")
+        end
+
         turtleJobsData.axisPriority = "xyz"
         table.insert(turtleJobsDataList,turtleJobsData)
-        --logFile.logWrite("insert turtleJobsData",turtleJobsData)
-        startY      = endY + 1
-        endY        = endY + partY
+        logFile.logWrite("insert turtleJobsData",turtleJobsData)
+        startPos      = endPos + 1
+        endPos        = endPos + partDistance
         nextJobNum  = nextJobNum + 1
     end
     turtleJobs.saveData()

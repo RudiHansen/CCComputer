@@ -54,4 +54,12 @@ function util.splitString(text)
     return fields
 end
 
+function util.setDefaultValueIfEmpty(value,default)
+    if(value == nil or value == "") then
+        return default
+    else
+        return value
+    end
+end
+
 return util

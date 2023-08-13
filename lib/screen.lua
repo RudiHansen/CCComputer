@@ -244,7 +244,11 @@ function screen.addTurtleJobList()
     numTurtles = tonumber(numTurtles)
     --logFile.logWrite("numTurtles",numTurtles)
 
-    turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,numTurtles)
+    screen.writeAtPos("Enter split axis y=horizontal or x=vertical",1,9)
+    screen.writeAtPos("#SplitAxis :",1,10)
+    local splitAxis = read()
+
+    turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,splitAxis,numTurtles)
 end
 
 function screen.deleteTurtleJobList()

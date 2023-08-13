@@ -30,8 +30,6 @@ So I need the computer to save a file when there is a notification, and then use
 Look at the C:\Spil\SendNotificationIFTTTT.ps1 example.
 I am having some problems with the Phone notifications, so perhaps I should make a program for the computer instead that notifies me, like the TestDisplay program I already made.
 
-Make it possible when dividing jobs to multiple turtles, to select if they should work horizontally or vertically.
-
 Change to Edit turtle job, I would like to be able to change the Job data, like changing the starting or ending coordinates.
 
 Not sure if this is possible, but would also be nice if turtles reported back the process of a job, so if the turtle was stopped it could resume.
