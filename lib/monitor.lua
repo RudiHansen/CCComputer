@@ -133,6 +133,8 @@ function monitor.askAboutBlock(turtleId,blockName)
     monitor.writeAtPos("pass"                            ,20,18)
     monitor.writeAtPos("secure"                          ,30,18)
 
+    notification.createNotificationFile("Turtle " .. turtleId .. " asks." ,blockName)
+    
     event, side, x, y = os.pullEvent("monitor_touch")
     if (x > 0 and x < 10) then
         --logFile.logWrite("rednet.send ",id,"mine")
@@ -152,6 +154,8 @@ function monitor.askAboutBlock(turtleId,blockName)
     monitor.clearLine(16)
     monitor.clearLine(17)
     monitor.clearLine(18)
+
+    notification.removeNotificationFile()
 end
 
 function monitor.writeTurtleDataOnLine(id,line)
@@ -163,6 +167,10 @@ function monitor.writeTurtleDataOnLine(id,line)
     monitor.writeAtPos(util.stringLen(tPos,14),17,line)
     monitor.writeAtPos(util.stringLen(td.Inv,3),32,line)
     monitor.writeAtPos(util.stringLen(td.Fuel,5),36,line)
+
+    if(td.Status=="ERROR") then
+        notification.createNotificationFile("Turtle " .. id .. " has an error.")
+    end
 end
 
 function monitor.centerTextOnLine(text,line)

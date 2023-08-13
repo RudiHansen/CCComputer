@@ -132,7 +132,10 @@ function turtles.messageToTurtleData(id,message)
                     Inv     = messageSplit[7],
                     Fuel    = messageSplit[8]
                 }
-    
+    if(Status == "DONE")then
+        notification.createNotificationFile("Turtle " .. turtleData.Name .. " is done working.")
+    end
+
     --logFile.logWrite("turtles.messageToTurtleData ",id)
     --logFile.logWrite("turtleData",turtleData)
     turtlesTable[id] = turtleData

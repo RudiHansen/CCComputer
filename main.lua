@@ -8,11 +8,12 @@ modem      = require("lib.modem")
 util       = require("lib.util")
 logFile    = require("lib.logFile")
 monitor    = require("lib.monitor")
-screen     = require("lib.screen")
-event      = require("lib.event")
-turtles    = require("lib.turtles")
-turtleJobs = require("lib.turtleJobs")
-posList    = require("lib.posList")
+screen          = require("lib.screen")
+event           = require("lib.event")
+turtles         = require("lib.turtles")
+turtleJobs      = require("lib.turtleJobs")
+posList         = require("lib.posList")
+notification    = require("lib.notification")
 
 
 -- Init library's
@@ -25,11 +26,10 @@ screen.clear()
 turtleJobs.loadData()
 posList.loadData()
 turtles.loadData()
-
+notification.removeNotificationFile()
 
 --monitor.drawMainScreen()
 --monitor.drawTurtleListScreen()
-
 
 --while(true) do
     parallel.waitForAny(monitor.screenHandler,
