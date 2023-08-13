@@ -15,8 +15,10 @@ end
 
 function notification.removeNotificationFile()
     if(fs.exists(notificationFileName)) then
-        fs.delete(notificationFileName)
-    end
+        local notificationFile = fs.open(notificationFileName, "w")
+        notificationFile.writeLine("EMPTY")
+        notificationFile.close()
+        end
 end
 
 return notification

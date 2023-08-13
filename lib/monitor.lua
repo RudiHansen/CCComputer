@@ -169,7 +169,11 @@ function monitor.writeTurtleDataOnLine(id,line)
     monitor.writeAtPos(util.stringLen(td.Fuel,5),36,line)
 
     if(td.Status=="ERROR") then
-        notification.createNotificationFile("Turtle " .. id .. " has an error.")
+        notification.createNotificationFile("Turtle " .. id .. " reported an error.")
+    elseif(td.Status=="WARNING") then
+        notification.createNotificationFile("Turtle " .. id .. " reported a warning.")
+    elseif(td.Status=="Idle") then
+        notification.createNotificationFile("Turtle " .. id .. " is idle.")
     end
 end
 
