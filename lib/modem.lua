@@ -22,6 +22,9 @@ function modem.receiveMessages()
         --logFile.logWrite("message",message)
         --logFile.logWrite("protocol",protocol)
     
+        -- Notify based on message and protocol.
+        notification.notifyBasedOnStatus(id, message, protocol)
+
         if(protocol == "S") then -- Protocol S = Status Messages
             turtles.messageToTurtleData(id,message)
             monitor.updateTurtleListOnScreen()

@@ -167,14 +167,6 @@ function monitor.writeTurtleDataOnLine(id,line)
     monitor.writeAtPos(util.stringLen(tPos,14),17,line)
     monitor.writeAtPos(util.stringLen(td.Inv,3),32,line)
     monitor.writeAtPos(util.stringLen(td.Fuel,5),36,line)
-
-    if(td.Status=="ERROR") then
-        notification.createNotificationFile("Turtle " .. id .. " reported an error.")
-    elseif(td.Status=="WARNING") then
-        notification.createNotificationFile("Turtle " .. id .. " reported a warning.")
-    elseif(td.Status=="Idle") then
-        notification.createNotificationFile("Turtle " .. id .. " is idle.")
-    end
 end
 
 function monitor.centerTextOnLine(text,line)
