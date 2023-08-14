@@ -1,5 +1,6 @@
 # CCComputer
 Computercraft Computer, used in minecraft for keeping info about and controlling Turtles.
+This is a work in progress, so use on your own risk, and please report any bugs you find.
 
 # Plan
 Needs to have a list of all active turtles their position and their status.
@@ -27,18 +28,27 @@ Still Missing:
 
 ## Turtle job progress
 Not sure if this is possible, but would also be nice if turtles reported back the process of a job, so if the turtle was stopped it could resume.
+Start by making turtles report progress on a job.
+
+
+## Send Turtle STOP from Computer
+Would like to make it possible to send a STOP work command from the Computer, to ether one or all Turtles.
+But for now the local STOP file should also stay there as a backup solution.
 
 ## Turtle blocking Turtle
 Some times Turtles can block each other, especially if more than one of them tries to Empty/Refuel at the same time.
 Need to figure out some way to avoid this from happening.
 Perhaps something about asking the computer if its ok to go, and then the computer checks if someone else if blocking. If the answer is someone is blocking, then wait 30 sec and try again.
 
-## Send Turtle STOP from Computer
-Would like to make it possible to send a STOP work command from the Computer, to ether one or all Turtles.
-But for now the local STOP file should also stay there as a backup solution.
 
 ## Edit turtle job
 Change to Edit turtle job, I would like to be able to change the Job data, like changing the starting or ending coordinates.
+
+## Problem with job creation.
+In turtleJobs.addTurtleJobToSeveralTurtles, right now there might be a problem with the job areas overlaying in some cases.
+The problem has something to do with this line:
+```lua startPos      = endPos - 1 ```
+That might not have to be minus 1, depending on the direction of the area.
 
 ## Error in screen handler
 Possible error in screen.screenHandler()
