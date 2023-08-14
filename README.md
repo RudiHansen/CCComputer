@@ -25,13 +25,8 @@ Id  TurtleName  Status  JobType FromX   FromZ   FromY   ToX ToZ ToY Direction   
 # Next Step
 Still Missing:
 
-## Notifications
-I would like the computer to send me a notification on my phone, when ewer the Turtle is stuck, or done working.
-So I need the computer to save a file when there is a notification, and then use powerShell to send a notification.
-Look at the C:\Spil\SendNotificationIFTTTT.ps1 example.
-I am having some problems with the Phone notifications, so perhaps I should make a program for the computer instead that notifies me, like the TestDisplay program I already made.
-Did this, but one thing is missing, a notification when a turtle is done with work.
-I have some notifications now in monitor.writeTurtleDataOnLine, but Idle does not work there, and perhaps all notifications should be moved to modem.receiveMessages
+## Turtle job progress
+Not sure if this is possible, but would also be nice if turtles reported back the process of a job, so if the turtle was stopped it could resume.
 
 ## Turtle blocking Turtle
 Some times Turtles can block each other, especially if more than one of them tries to Empty/Refuel at the same time.
@@ -44,9 +39,6 @@ But for now the local STOP file should also stay there as a backup solution.
 
 ## Edit turtle job
 Change to Edit turtle job, I would like to be able to change the Job data, like changing the starting or ending coordinates.
-
-## Turtle job progress
-Not sure if this is possible, but would also be nice if turtles reported back the process of a job, so if the turtle was stopped it could resume.
 
 ## Error in screen handler
 Possible error in screen.screenHandler()
@@ -124,3 +116,12 @@ Some data
     Think I need a dat file for all locations
     And later I need to be able to have multiple fuel and drop off locations, and only send nearest to turtle.
     Also need to send block_data to turtles in some way.
+
+# Tasks Done
+## Notifications
+I would like the computer to send me a notification on my phone, when ewer the Turtle is stuck, or done working.
+So I need the computer to save a file when there is a notification, and then use powerShell to send a notification.
+Look at the C:\Spil\SendNotificationIFTTTT.ps1 example.
+I am having some problems with the Phone notifications, so perhaps I should make a program for the computer instead that notifies me, like the TestDisplay program I already made.
+Did this, but one thing is missing, a notification when a turtle is done with work.
+I have some notifications now in monitor.writeTurtleDataOnLine, but Idle does not work there, and perhaps all notifications should be moved to modem.receiveMessages

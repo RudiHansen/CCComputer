@@ -134,12 +134,12 @@ function turtleJobs.deleteTurtleJobList(id)
 end
 
 function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,splitAxis,numTurtles)
-    --logFile.logWrite("In turtleJobs.addTurtleJobToSeveralTurtles")
-    --logFile.logWrite("startArea",startArea)
-    --logFile.logWrite("endArea",endArea)
-    --logFile.logWrite("numTurtles",numTurtles)
+    logFile.logWrite("In turtleJobs.addTurtleJobToSeveralTurtles")
+    logFile.logWrite("startArea",startArea)
+    logFile.logWrite("endArea",endArea)
+    logFile.logWrite("numTurtles",numTurtles)
     local nextJobNum = #turtleJobsDataList + 1
-    --logFile.logWrite("nextJobNum",nextJobNum)
+    logFile.logWrite("nextJobNum",nextJobNum)
 
     splitAxis = util.setDefaultValueIfEmpty(splitAxis,"y")
 
@@ -200,7 +200,7 @@ function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,splitAxis,num
         turtleJobsData.axisPriority = "xyz"
         table.insert(turtleJobsDataList,turtleJobsData)
         logFile.logWrite("insert turtleJobsData",turtleJobsData)
-        startPos      = endPos + 1
+        startPos      = endPos - 1
         endPos        = endPos + partDistance
         nextJobNum  = nextJobNum + 1
     end
