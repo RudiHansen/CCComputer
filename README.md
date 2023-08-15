@@ -6,29 +6,14 @@ This is a work in progress, so use on your own risk, and please report any bugs 
 Needs to have a list of all active turtles their position and their status.
 Needs to be able to send work orders to turtles.
 
-# Saved PosList.dat
-1,Miner1,75,36,63,S
-2,Miner2,77,36,63,S
-3,Fuel,73,37,63,N
-4,DropOff,74,37,63,N
-
-# Data Structures
-TurtleData
-TurtleId    Name    Status  PosX    PosZ    PosY    PosF    Inv Fuel
-
-TurtleJobData
-Id  TurtleName  Status  JobType FromX   FromZ   FromY   ToX ToZ ToY Direction   AxisPriority
-                NEW     moveToPos
-                RUN     traverseArea
-                DONE    moveHome
-
-
 # Next Step
 Still Missing:
 
 ## Turtle job progress
 Not sure if this is possible, but would also be nice if turtles reported back the process of a job, so if the turtle was stopped it could resume.
-Start by making turtles report progress on a job.
+Start by making turtles report progress on a job, using new protocol "SP" (Status Progress)
+
+
 
 
 ## Send Turtle STOP from Computer
@@ -40,6 +25,14 @@ Some times Turtles can block each other, especially if more than one of them tri
 Need to figure out some way to avoid this from happening.
 Perhaps something about asking the computer if its ok to go, and then the computer checks if someone else if blocking. If the answer is someone is blocking, then wait 30 sec and try again.
 
+## TestDisplayTurtleMinerStatus.exe
+Consider adding the list of Turtles running, and their status, to the display. (TurtleJobs.dat)
+General rework of layout of the app.
+
+## Problem in move.byPassBlock
+Some times the turtle gets into a loop trying to pass first one way, and the the other, and does this forever.
+Also perhaps I need to make a check for if the turtle moves out of its area, since it should newer do that.
+And perhaps also a check for if the turtle gets too far away from the starting position.
 
 ## Edit turtle job
 Change to Edit turtle job, I would like to be able to change the Job data, like changing the starting or ending coordinates.

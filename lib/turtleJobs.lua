@@ -7,7 +7,7 @@ local turtleJobs = {}
 
 local dataFileNameTurtleJobs = "turtleJobs.dat"
 
-local turtleJobsData        = {Id=0,TurtleName="",Status="",JobType="",x1=0,z1=0,y1=0,f1="",x2=0,z2=0,y2=0,f2="",axisPriority=""}
+local turtleJobsData        = {Id=0,TurtleName="",Status="",JobType="",x1=0,z1=0,y1=0,f1="",x2=0,z2=0,y2=0,f2="",x3=0,z3=0,y3=0,f3="",axisPriority=""}
 local turtleJobsDataList    = {}
 
 function turtleJobs.loadData()
@@ -41,7 +41,11 @@ function turtleJobs.loadData()
         turtleJobsData.z2           = fields[10]
         turtleJobsData.y2           = fields[11]
         turtleJobsData.f2           = fields[12]
-        turtleJobsData.axisPriority = fields[13]
+        turtleJobsData.x3           = fields[13]
+        turtleJobsData.z3           = fields[14]
+        turtleJobsData.y3           = fields[15]
+        turtleJobsData.f3           = fields[16]
+        turtleJobsData.axisPriority = fields[17]
         table.insert(turtleJobsDataList,turtleJobsData)
         --logFile.logWrite("table.insert",turtleJobsData.TurtleName)
         --logFile.logWrite("turtleJobsData.axisPriority",turtleJobsData.axisPriority)
@@ -99,7 +103,7 @@ function turtleJobs.GetJobFromId(Id)
         --logFile.logWrite("turtleJobsData.Id",turtleJobsData.Id)
         --logFile.logWrite("turtleJobsData.TurtleName",turtleJobsData.TurtleName)
         --logFile.logWrite("turtleJobsData.Status",turtleJobsData.Status)
-        if(turtleJobsData.Id == Id)then
+        if(turtleJobsData.Id == tostring(Id))then
             --logFile.logWrite("Return data")
             return turtleJobsData
         end
@@ -121,6 +125,24 @@ function turtleJobs.updateTurtleJobStatus(message)
     turtleJobsData = turtleJobs.GetJobFromId(fields[1])
     turtleJobsData.Status = fields[2]
     turtleJobs.saveData()
+end
+
+function turtleJobs.updateTurtleJobProgress(id,message)
+    --logFile.logWrite("In turtleJobs.updateTurtleJobProgress",id,message)
+    fields = {}
+    for field in string.gmatch(message, "[^;]+") do
+        table.insert(fields, field)
+    end
+    turtleJobsData = turtleJobs.GetJobFromId(id)
+    turtleJobsData.x3 = fields[3]
+    turtleJobsData.z3 = fields[4]
+    turtleJobsData.y3 = fields[5]
+    turtleJobsData.f3 = fields[6]
+        
+    turtleJobs.saveData()
+    --logFile.logWrite("field",fields)
+    --logFile.logWrite("turtleJobsData",turtleJobsData)
+    updateTurtleJobProgressCounter = 80
 end
 
 function turtleJobs.deleteTurtleJobList(id)
@@ -183,6 +205,11 @@ function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,splitAxis,num
             turtleJobsData.z2           = endArea[2]
             turtleJobsData.y2           = endPos
             turtleJobsData.f2           = endArea[4]
+            turtleJobsData.x3           = startArea[1]
+            turtleJobsData.z3           = startArea[2]
+            turtleJobsData.y3           = startPos
+            turtleJobsData.f3           = startArea[4]
+
         elseif(splitAxis=="x")then
             turtleJobsData.x1           = startPos
             turtleJobsData.z1           = startArea[2]
@@ -192,6 +219,10 @@ function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,splitAxis,num
             turtleJobsData.z2           = endArea[2]
             turtleJobsData.y2           = endArea[3]
             turtleJobsData.f2           = endArea[4]
+            turtleJobsData.x3           = startPos
+            turtleJobsData.z3           = startArea[2]
+            turtleJobsData.y3           = startArea[3]
+            turtleJobsData.f3           = startArea[4]
         else
             logFile.logWrite("ERROR2! From turtleJobs.addTurtleJobToSeveralTurtles")
             logFile.logWrite("splitAxis=",splitAxis," value not allowed.")
@@ -209,6 +240,7 @@ end
 
 
 function turtleJobs.Job2MsgStr(turtleJobData)
+    --logFile.logWrite("in turtleJobs.Job2MsgStr turtleJobData=",turtleJobData)
     if(turtleJobData == nil)then
         return ""
     end
@@ -224,6 +256,10 @@ function turtleJobs.Job2MsgStr(turtleJobData)
                    turtleJobData.z2           ..","..
                    turtleJobData.y2           ..","..
                    turtleJobData.f2           ..","..
+                   turtleJobData.x3           ..","..
+                   turtleJobData.z3           ..","..
+                   turtleJobData.y3           ..","..
+                   turtleJobData.f3           ..","..
                    turtleJobData.axisPriority
 end
 

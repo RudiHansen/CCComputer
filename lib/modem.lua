@@ -32,6 +32,9 @@ function modem.receiveMessages()
             --logFile.logWrite("modem.receiveMessages","ST",message)
             turtleJobs.updateTurtleJobStatus(message)
             screen.writeTurtleJobListToScreen()
+        elseif(protocol == "SP") then -- Protocol SP = Turtle job progress
+            --logFile.logWrite("modem.receiveMessages","SP",message)
+            turtleJobs.updateTurtleJobProgress(id, message)
         elseif(protocol == "QB") then -- Protocol QB = Question about Block action
             --logFile.logWrite("Received QB Id=",id)
             monitor.askAboutBlock(id,message)
