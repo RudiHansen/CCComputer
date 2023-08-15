@@ -127,6 +127,16 @@ function turtleJobs.updateTurtleJobStatus(message)
     turtleJobs.saveData()
 end
 
+function turtleJobs.updateTurtleJobStatusAll(status)
+    --logFile.logWrite("turtleJobs.updateTurtleJobStatusAll",status)
+    for i=1,#turtleJobsDataList do
+        turtleJobsData = turtleJobsDataList[i]
+        turtleJobsData.Status = status
+    end
+    turtleJobs.saveData()
+end
+
+
 function turtleJobs.updateTurtleJobProgress(id,message)
     --logFile.logWrite("In turtleJobs.updateTurtleJobProgress",id,message)
     fields = {}
@@ -236,6 +246,14 @@ function turtleJobs.addTurtleJobToSeveralTurtles(startArea,endArea,splitAxis,num
         nextJobNum  = nextJobNum + 1
     end
     turtleJobs.saveData()
+end
+
+function turtleJobs.isJobStatusStop(id)
+    if(turtleJobsDataList[tonumber(id)].Status == "STOP")then
+        return true
+    else
+        return false
+    end
 end
 
 

@@ -205,16 +205,31 @@ function screen.deletePosList()
 end
 
 function screen.editTurtleJobList()
-    --logFile.logWrite("In screen.editTurtleJobList")
-    screen.writeAtPos("You can only edit status on record to NEW",1,15)
-    screen.writeAtPos("Enter the record to change status on",1,16)
-    screen.writeAtPos("Record : ",1,17)
+    logFile.logWrite("In screen.editTurtleJobList")
+    screen.writeAtPos("Enter the record to change status on A=ALL",1,15)
+    screen.writeAtPos("Record : ",1,16)
+    local inputId = read()
+    screen.writeAtPos("Change status to N=NEW or S=STOP",1,17)
     local input = read()
     screen.clearLine(15)
     screen.clearLine(16)
     screen.clearLine(17)
-    --logFile.logWrite("input",input)
-    turtleJobs.updateTurtleJobStatus(input..",NEW")
+    logFile.logWrite("inputId",inputId)
+    logFile.logWrite("input",input)
+
+    local status = ""
+    if(input=="N" or input == "n") then
+        status = "NEW"
+    elseif(input=="S" or input == "s") then
+        status = "STOP"
+    end
+
+    if(inputId=="A" or inputId == "a") then
+        turtleJobs.updateTurtleJobStatusAll(status)
+    else
+        turtleJobs.updateTurtleJobStatus(inputId..","..status)
+    end
+
 end
 
 -- This method has to ask the user for an area to mine, and then divide that area into

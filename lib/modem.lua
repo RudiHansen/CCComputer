@@ -53,6 +53,11 @@ function modem.receiveMessages()
             answerString = posList.getPosListDataFromName(message)
             --logFile.logWrite("answerString",answerString)
             rednet.send(id,answerString,"AL")
+        elseif(protocol == "QS") then -- Protocol QS = Question about STOP Command
+            logFile.logWrite("Received QS from Id=",id)
+            local answerString = turtleJobs.isJobStatusStop(id)
+            logFile.logWrite("answerString",answerString)
+            rednet.send(id,answerString,"AS")
         end
     end
 end
