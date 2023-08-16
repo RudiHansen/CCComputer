@@ -22,6 +22,7 @@ function notification.removeNotificationFile()
 end
 
 function notification.notifyBasedOnStatus(id, status, protocol)
+    logFile.logWrite("In notification.notifyBasedOnStatus", "id: " .. id .. ", status: " .. status .. ", protocol: " .. protocol)
     if(protocol == "S") then
         if(status == "ERROR") then
             notification.createNotificationFile("Turtle " .. id .. " reported an error.")

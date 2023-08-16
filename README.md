@@ -9,10 +9,54 @@ Needs to be able to send work orders to turtles.
 # Next Step
 Still Missing:
 
+## Turtle movement handler.
+I think I need to make one function to handle all moves of the turtle.
+I need this, so there is only one place where all move actions are handled.
+
+Existing functions:
+    move.moveToPos(endPos,axisPriority,dig) : 
+        endPos is the position to move to, axisPriority is the axis to prioritize, dig is if the turtle should dig blocks in the way.
+        Calculates midPos, two blocks before endPos, based on axisPriority.
+        Calls moveHelper.moveToPosWorker to do the actual work, one time with midPos, and one time with endPos.
+
+    moveHelper.moveToPosWorker(endPos,axisPriority,dig) :
+        Calls blocks.inspectDig(nextStep,dig) to check if the next step is possible, and if it is, then calls move.move(nextStep) to perform the move.
+        But if its not possible it calls move.byPassBlock
+
+    move.traverseArea(turtleJobData,dig) :
+        move.moveToPos(startPos,"",false)
+        moveHelper.tryMoveDig("N")
+        move.byPassBlock(nextMove,areaStart,areaEnd,axisPriority,dig)
+        Also calls:
+            inventory.checkAll()
+            modem.sendTurtleJobProgress()
+
+    move.byPassBlock(nextMove,startPos,endPos,axisPriority,dig) :
+        moveHelper.calculateMoves(nextMove,endPos)
+        moveHelper.tryMoveDig(sideMove1)
+        moveHelper.tryMoveForceDig(sideMove1)
+        blocks.inspectDig(origMove,dig)
+
+New function.
+    New Function move.moveToPos(startPos,endPos,axisPriority,dig) :
+
+
+
+
 ## Turtle blocking Turtle
 Some times Turtles can block each other, especially if more than one of them tries to Empty/Refuel at the same time.
-Need to figure out some way to avoid this from happening.
-Perhaps something about asking the computer if its ok to go, and then the computer checks if someone else if blocking. If the answer is someone is blocking, then wait 30 sec and try again.
+I think the problem is some where in blocks.inspectDig(direction,dig)
+Some where in line 44
+But to fix this I need to make something where you can ask for other turtles, status and position.
+
+
+## Line up turtle jobs on restart?
+When the computer restarts, it should line up all the turtles, and then start the jobs again.
+But this is a part that might need a larger change in the code, so I will leave it for now.
+
+## modem.askAboutStopCommand() implement timeout
+In the modem.askAboutStopCommand() I have a timeout functionality.
+I need to check if i need this in other places, and if I do, then I need to make a function for it.
 
 ## TestDisplayTurtleMinerStatus.exe
 Consider adding the list of Turtles running, and their status, to the display. (TurtleJobs.dat)
