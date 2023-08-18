@@ -9,18 +9,13 @@ Needs to be able to send work orders to turtles.
 # Next Step
 Still Missing:
 
-## Add New job.
-Its making overlapping areas with these parameters.
-2,-78,68,N
-35,-100,118,N
-4
-x
+## Rewrite of the code.
+I am going to rewrite some of the code, to implement some of the things I have learned, in writing the existing code.
 
-## Turtle movement handler.
 I think I need to make one function to handle all moves of the turtle.
 I need this, so there is only one place where all move actions are handled.
 
-Existing functions:
+### Existing functions:
     move.moveToPos(endPos,axisPriority,dig) : 
         endPos is the position to move to, axisPriority is the axis to prioritize, dig is if the turtle should dig blocks in the way.
         Calculates midPos, two blocks before endPos, based on axisPriority.
@@ -44,7 +39,7 @@ Existing functions:
         moveHelper.tryMoveForceDig(sideMove1)
         blocks.inspectDig(origMove,dig)
 
-The functionality I need is as follows.
+### Needed functionality:
 I need to be able to make a turtle move from one position to another.
 
 But I need to be able to do it in a few different ways.
@@ -63,11 +58,16 @@ The turtle need to be able to handle different blocks on the way.
 
 The Turtle has to report its position back to the Computer, both to display status, but also so other turtles can avoid it.             
 
-New function.
+### New function:
     
 
 
-
+## Add New job.
+Its making overlapping areas with these parameters.
+2,-78,68,N
+35,-100,118,N
+4
+x
 
 ## Turtle blocking Turtle
 Some times Turtles can block each other, especially if more than one of them tries to Empty/Refuel at the same time.
