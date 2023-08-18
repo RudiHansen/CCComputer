@@ -9,6 +9,13 @@ Needs to be able to send work orders to turtles.
 # Next Step
 Still Missing:
 
+## Add New job.
+Its making overlapping areas with these parameters.
+2,-78,68,N
+35,-100,118,N
+4
+x
+
 ## Turtle movement handler.
 I think I need to make one function to handle all moves of the turtle.
 I need this, so there is only one place where all move actions are handled.
@@ -37,8 +44,27 @@ Existing functions:
         moveHelper.tryMoveForceDig(sideMove1)
         blocks.inspectDig(origMove,dig)
 
+The functionality I need is as follows.
+I need to be able to make a turtle move from one position to another.
+
+But I need to be able to do it in a few different ways.
+    Move directly.
+    Traverse an area.
+
+And I also need to be able to prioritize the axis to move on.
+
+The turtle need to be able to handle different blocks on the way.
+    Ignore : Blocks the Turtle can move through. (Water and Lava)
+    Mine   : Blocks that can be mined, depending on a dig parameter.
+    Pass   : Blocks that can not be mined, but the turtle should initially try to pass. them.
+    Secure : Blocks that can under no circumstances be mined.
+    Turtles: Blocks that are other turtles, and should be avoided.
+             I may also need a special way to handle this, as turtles move.
+
+The Turtle has to report its position back to the Computer, both to display status, but also so other turtles can avoid it.             
+
 New function.
-    New Function move.moveToPos(startPos,endPos,axisPriority,dig) :
+    
 
 
 
