@@ -58,9 +58,92 @@ The turtle need to be able to handle different blocks on the way.
 
 The Turtle has to report its position back to the Computer, both to display status, but also so other turtles can avoid it.             
 
-### New function:
-    
+### New functions:
+move.moveToPosNew(startPos,endPos,axisPriority,moveMethod,dig) :
+    startPos and endPos is the start and end position of the move.
+    axisPriority is the axis to prioritize.
+    moveMethod is the method to use, direct or area.
+        direct : Move directly from startPos to endPos.
+        area   : Traverse an area from startPos to endPos.
+    dig is if the turtle should dig blocks in the way.
 
+moveHelper.moveToPosWorkerNew(direction, steps, dig) :
+    direction is the direction to move, like "N" or "S"
+    steps is the number of steps to move.
+    dig is if the turtle should dig blocks in the way.
+
+moveHelper.tryMoveNew(direction,dig) :
+    direction is the direction to move, like "N" or "S"
+    dig is if the turtle should dig blocks in the way.
+    In this method, the following checks has to be made to determine if a move can be made.
+        Check if the move will take the turtle out of the area.
+        Check if a turtle is in the way.
+        Check if there is a block in the way, and if there is can it be mined?
+    When a move has been made.
+        On every move:
+            Save Position to file.
+        On every x moves:
+            Send turtle status to computer.
+            Send TurtleJob status to computer.
+
+
+inventory.unloadAndRefuel()
+    This method should be called when the turtle is out of fuel, and needs to go to a fuel station to refuel.
+    It should also be called when the turtle is full, and needs to go to a drop off station to unload.
+
+### New data:
+settingsData: (Settings for a Computer or Turtle)
+    Type        : The type of settings. (Computer, Turtle)
+    Depending on the Type the following settings are available.
+    Computer:
+        Id          : The Id of the Computer.
+        ModemSide   : The side of the Computer where the modem is connected.
+        MonitorSide : The side of the Computer where the monitor is connected.
+    Turtle:
+        Id          : The Id of the Turtle.
+        ModemSide   : The side of the Turtle where the modem is connected.
+        MaxFuelLevel: The maximum fuel level of the Turtle.
+        MinFuelLevel: The minimum fuel level of the Turtle.
+        RefuelItems : The number of items the Turtle should use pr. refuel.
+        MinFreeSlots: The minimum number of free slots the Turtle should have before it goes to unload.
+
+turtleData: (Data about a turtle)
+    Id      : The Id of the turtle.
+    Name    : The name of the turtle. (os.getComputerLabel())
+    Status  : The status of the turtle. (Idle, Working, Moving, Waiting, Error, Warning, Unload)
+    PosX    : The X position of the turtle.
+    PosZ    : The Z position of the turtle.
+    PosY    : The Y position of the turtle.
+    PosF    : What direction the turtle is facing.
+    Inv     : Free Inventory slots.
+    Fuel    : Fuel level. (turtle.getFuelLevel())
+
+turtleJobData:  (Data about a job)
+    Id          : The Job Id.
+    TurtleName  : The name of the turtle that is working on the job.
+    Status      : The status of the job. (New, Running, Paused, Done, Error)
+    JobType     : The type of job. (MoveTo, ClearArea, MoveHome, Unload)
+    AxisPriority: The axis to prioritize when moving.
+    StartX      : The X position of the start of the job.
+    StartZ      : The Z position of the start of the job.
+    StartY      : The Y position of the start of the job.
+    StartF      : What direction the turtle is facing at the start of the job.
+    EndX        : The X position of the end of the job.
+    EndZ        : The Z position of the end of the job.
+    EndY        : The Y position of the end of the job.
+    EndF        : What direction the turtle should be facing at the end of the job.
+    LastX       : The X position of the turtle at the last save.
+    LastZ       : The Z position of the turtle at the last save.
+    LastY       : The Y position of the turtle at the last save.
+    LastF       : What direction the turtle was facing at the last save.
+
+posData: (Data about a position)
+    Id      : The Id of the position.
+    Name    : The name of the position.
+    PosX    : The X position of the position.
+    PosZ    : The Z position of the position.
+    PosY    : The Y position of the position.
+    PosF    : The direction of the position.
 
 ## Add New job.
 Its making overlapping areas with these parameters.
