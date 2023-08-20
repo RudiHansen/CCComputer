@@ -1,6 +1,8 @@
 # CCComputer
 Computercraft Computer, used in minecraft for keeping info about and controlling Turtles.
 This is a work in progress, so use on your own risk, and please report any bugs you find.
+IMPORTANT: I have moved the code to a new repository, so this repository is no longer maintained.
+    The new repository is right now Private, but I will make it public when I have working code.
 
 # Plan
 Needs to have a list of all active turtles their position and their status.
