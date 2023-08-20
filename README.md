@@ -7,7 +7,7 @@ Needs to have a list of all active turtles their position and their status.
 Needs to be able to send work orders to turtles.
 
 # Next Step
-Still Missing:
+
 
 ## Rewrite of the code.
 I am going to rewrite some of the code, to implement some of the things I have learned, in writing the existing code.
@@ -144,6 +144,10 @@ posData: (Data about a position)
     PosZ    : The Z position of the position.
     PosY    : The Y position of the position.
     PosF    : The direction of the position.
+
+blockData: (Data about a block)
+    Name    : The name of the block.
+    Action  : The action to perform on the block. (Ignore, Mine, Pass, Secure, Turtle)
 
 ## Add New job.
 Its making overlapping areas with these parameters.
